@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './header';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class ProductDetails extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('/api/products/php?id=1')
+    fetch('/api/products.php?id=1')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -18,7 +19,19 @@ class ProductDetails extends React.Component {
       );
   }
   render() {
-    return null;
+    if (!this.state.product) return null;
+    return (
+      <div>
+        <Header/>
+        <div>
+          <img src={this.state.product.image} alt="Product Image"/>
+          {this.state.product.name}
+          {this.state.product.price}
+          {this.state.product.shortDescription}
+          {this.state.product.longDescription}
+        </div>
+      </div>
+    );
   }
 }
 export default ProductDetails;
