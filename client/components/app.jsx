@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+import ProductListItem from './product-list-item';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,13 +15,15 @@ export default class App extends React.Component {
   getProducts() {
     fetch('/api/products.php')
       .then(response => response.json())
-      .then(retrieveProducts => this.setState({
-        products: this.state.products(retrieveProducts)
-      }));
+      .then(retrieveProducts => this.setState(this.state.products))
+      .catch(error => error);
   }
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <ProductListItem />
+      </div>
     );
   }
 }
