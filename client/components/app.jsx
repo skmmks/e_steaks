@@ -8,8 +8,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      name: 'catalog',
-      params: {}
+      view: {
+        name: 'catalog',
+        params: {}
+      }
     };
   }
   componentDidMount() {
