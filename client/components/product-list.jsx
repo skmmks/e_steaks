@@ -7,7 +7,7 @@ function ProductList(props) {
   );
   return (
     <div className='container'>
-      <div className="row">
+      <div className='row'>
         {merch}
       </div>
     </div>

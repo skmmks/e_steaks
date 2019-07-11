@@ -1,9 +1,11 @@
 import React from 'react';
+
 function Header() {
   return (
     <div>
-      <h1>Wicked Sales</h1>
-      <h1>logo</h1>
+      <h2>
+        <img src="/shop.png" alt="Wicked Sales Icon"/> The Shop
+      </h2>
     </div>
   );
 }
