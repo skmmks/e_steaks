@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+
 import ProductListItem from './product-list-item';
 
 export default class App extends React.Component {
@@ -13,16 +14,20 @@ export default class App extends React.Component {
     this.getProducts();
   }
   getProducts() {
-    fetch('/api/products.php')
+    fetch('/api/products.php', {
+      method: 'GET'
+    })
       .then(response => response.json())
-      .then(retrieveProducts => this.setState(this.state.products))
+      .then(retrieveProducts => this.setState({
+        products: retrieveProducts
+      }))
       .catch(error => error);
   }
   render() {
     return (
-      <div>
+      <div className={'container'}>
         <Header />
-        <ProductListItem />
+        <ProductListItem/>
       </div>
     );
   }
