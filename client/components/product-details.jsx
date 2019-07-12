@@ -7,6 +7,11 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.handleReturnButton = this.handleReturnButton.bind(this);
+  }
+  handleReturnButton(e) {
+    e.preventDefault();
+    this.props.setView('catalog', {});
   }
   componentDidMount() {
     const paramID = this.props.params.id;
@@ -25,6 +30,7 @@ class ProductDetails extends React.Component {
       <div>
         <Header/>
         <div>
+          <div onClick={this.handleReturnButton} className={'btn btn-success'}>Click to Return</div>
           <img src={this.state.product.image} alt="Product Image"/>
           {this.state.product.name}
           {this.state.product.price}
