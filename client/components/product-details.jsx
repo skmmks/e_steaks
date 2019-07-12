@@ -9,7 +9,8 @@ class ProductDetails extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('/api/products.php?id=1')
+    const paramID = this.props.params.id;
+    fetch(`/api/products.php?id=${paramID}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
