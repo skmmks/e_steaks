@@ -40,7 +40,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <ProductList products={this.state.products}/>
+        <ProductList products={this.state.products} view={this.setView}/>
       </div>
     );
   }
