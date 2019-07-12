@@ -20,7 +20,8 @@ export default class App extends React.Component {
     this.setState({
       view: {
         name: name,
-        params: params
+        params: params,
+        cart: []
       }
     });
   }
