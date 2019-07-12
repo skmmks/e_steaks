@@ -18,7 +18,7 @@ export default class ProductListItem extends React.Component {
             <img height='300px' width="100%" className='card-image-top' src={this.props.merch.image} alt={this.props.merch.name}/>
             <h2 className='card-header'>{this.props.merch.name}</h2>
             <h4>${price.toFixed(2)}</h4>
-            <h6>{this.props.merch.shortDescription}</h6>
+            <p>{this.props.merch.shortDescription}</p>
           </div>
         </div>
       </div>
