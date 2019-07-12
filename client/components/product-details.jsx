@@ -36,7 +36,7 @@ class ProductDetails extends React.Component {
           </div>
           <div className="col-lg-4">
             <h1>{this.state.product.name}</h1>
-            <h4>${((this.state.product.price) / 100).toFixed(2)}</h4>
+            <h4 className='text-muted'>${((this.state.product.price) / 100).toFixed(2)}</h4>
             <h5>{this.state.product.shortDescription}</h5>
           </div>
         </div>
