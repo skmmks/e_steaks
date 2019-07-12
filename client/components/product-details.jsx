@@ -29,13 +29,19 @@ class ProductDetails extends React.Component {
     return (
       <div>
         <Header/>
-        <div>
-          <div onClick={this.handleReturnButton} className={'btn btn-success'}>Click to Return</div>
-          <img src={this.state.product.image} alt="Product Image"/>
-          {this.state.product.name}
-          {this.state.product.price}
-          {this.state.product.shortDescription}
-          {this.state.product.longDescription}
+        <div onClick={this.handleReturnButton} className={'btn btn-primary ml-2'}>Back to Catalog</div>
+        <div className='row'>
+          <div className="col-lg-5 ml-5 mt-2">
+            <img height='400px' width='100%' src={this.state.product.image} alt="Product Image"/>
+          </div>
+          <div className="col-lg-4">
+            <h1>{this.state.product.name}</h1>
+            <h4>${((this.state.product.price) / 100).toFixed(2)}</h4>
+            <h5>{this.state.product.shortDescription}</h5>
+          </div>
+        </div>
+        <div className="row">
+          <div className='col mx-5'>{this.state.product.longDescription}</div>
         </div>
       </div>
     );
