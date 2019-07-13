@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './header';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class ProductDetails extends React.Component {
     if (!this.state.product) return null;
     return (
       <div>
-        <Header/>
         <div onClick={this.handleReturnButton} className={'btn btn-primary ml-2'}>Back to Catalog</div>
         <div className='row'>
           <div className="col-lg-5 ml-5 mt-2">
