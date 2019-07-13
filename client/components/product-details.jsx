@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './header';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -8,10 +7,15 @@ class ProductDetails extends React.Component {
       product: null
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   handleReturnButton(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
+  }
+  handleAddToCart(e) {
+    e.preventDefault();
+    this.props.addToCart(this.state.product);
   }
   componentDidMount() {
     const paramID = this.props.params.id;
@@ -28,7 +32,6 @@ class ProductDetails extends React.Component {
     if (!this.state.product) return null;
     return (
       <div>
-        <Header/>
         <div onClick={this.handleReturnButton} className={'btn btn-primary ml-2'}>Back to Catalog</div>
         <div className='row'>
           <div className="col-lg-5 ml-5 mt-2">
@@ -36,8 +39,11 @@ class ProductDetails extends React.Component {
           </div>
           <div className="col-lg-4">
             <h1>{this.state.product.name}</h1>
-            <h4>${((this.state.product.price) / 100).toFixed(2)}</h4>
+            <h4 className='text-muted'>${((this.state.product.price) / 100).toFixed(2)}</h4>
             <h5>{this.state.product.shortDescription}</h5>
+            <div className='btn btn-warning mt-4' onClick={this.handleAddToCart}>
+              Add To Cart
+            </div>
           </div>
         </div>
         <div className="row">
