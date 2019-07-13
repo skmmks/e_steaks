@@ -7,10 +7,15 @@ class ProductDetails extends React.Component {
       product: null
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   handleReturnButton(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
+  }
+  handleAddToCart(e) {
+    e.preventDefault();
+    this.props.addToCart(this.state.product);
   }
   componentDidMount() {
     const paramID = this.props.params.id;
@@ -36,7 +41,7 @@ class ProductDetails extends React.Component {
             <h1>{this.state.product.name}</h1>
             <h4 className='text-muted'>${((this.state.product.price) / 100).toFixed(2)}</h4>
             <h5>{this.state.product.shortDescription}</h5>
-            <div className='btn btn-warning mt-4'>
+            <div className='btn btn-warning mt-4' onClick={this.handleAddToCart}>
               Add To Cart
             </div>
           </div>

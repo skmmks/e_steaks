@@ -51,10 +51,10 @@ export default class App extends React.Component {
       .catch(error => error);
   }
   addToCart(product) {
-    fetch('/api/card.php', {
+    fetch('/api/cart.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify()
+      body: JSON.stringify(product)
     })
       .then(res => res.json())
       .then(res => this.setState({
@@ -74,7 +74,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.state.cart.length}/>
-          <ProductDetails params={this.state.view.params} setView={this.setView}/>
+          <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
         </div>
       );
     }
