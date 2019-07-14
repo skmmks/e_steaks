@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function ProductList(props) {
+export default function CartSummaryItem(props) {
   return (
     <div className='col'>
       <div className='row'>
-        <div>Item Image</div>
-        <div>Item Name</div>
-        <div>Item Price</div>
-        <div>Short Description</div>
+        <div>{props.image}</div>
+        <div>{props.name}</div>
+        <div>{props.price}</div>
+        <div>{props.shortDescription}</div>
       </div>
     </div>
   );
