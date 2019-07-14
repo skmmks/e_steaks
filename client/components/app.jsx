@@ -69,7 +69,6 @@ export default class App extends React.Component {
         <div>
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductList products={this.state.products} view={this.setView}/>
-          <CartSummary cartState={this.state.cart}/>
         </div>
       );
     } else if (this.state.view.name === 'details') {
@@ -77,7 +76,6 @@ export default class App extends React.Component {
         <div>
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
-          <CartSummary cartState={this.state.cart} setView={this.setView}/>
         </div>
       );
     } else if (this.state.view.name === 'cart') {

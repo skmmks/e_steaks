@@ -15,10 +15,10 @@ export default class CartSummary extends React.Component {
     const itemsInCart = this.props.cartState.map((cartItem, index) => <CartSummaryItem key={index} cartItem={cartItem}/>);
     return (
       <div>
-        <div className='btn btn-success' onClick={this.handleReturnButton}>Return to Catalog</div>
-        <h3>My Cart</h3>
+        <div className='btn btn-primary ml-2' onClick={this.handleReturnButton}>Return to Catalog</div>
+        <h3 className='mt-5'>My Cart</h3>
         {itemsInCart}
-        <h3>${((priceOfCartItems) / 100).toFixed(2)}</h3>
+        <h3 className='mt-4'>Total Price: ${((priceOfCartItems) / 100).toFixed(2)}</h3>
       </div>
     );
   }
