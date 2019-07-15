@@ -31,6 +31,9 @@ export default class App extends React.Component {
     this.getProducts();
     this.getCartItems();
   }
+  placeOrder() {
+
+  }
   getCartItems() {
     fetch('/api/cart.php', {
       method: 'GET'
