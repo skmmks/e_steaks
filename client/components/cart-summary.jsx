@@ -11,6 +11,15 @@ export default class CartSummary extends React.Component {
     this.props.setView('catalog', {});
   }
   render() {
+    if (this.props.cartState.length === 0) {
+      return (
+        <div>
+          <h1>
+            Your cart is empty
+          </h1>
+        </div>
+      );
+    }
     const priceOfCartItems = this.props.cartState.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
     const itemsInCart = this.props.cartState.map((cartItem, index) => <CartSummaryItem key={index} cartItem={cartItem}/>);
     return (
