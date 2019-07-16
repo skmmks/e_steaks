@@ -10,4 +10,7 @@ if(!function_exists('error_handler')) {
         print($json_output);
     }
 }
+function startup() {
+    header('Content-type:application/json');
+}
 ?>

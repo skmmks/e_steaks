@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 require('functions.php');
 set_exception_handler('error_handler');
 require_once('db_connection.php');
-
+startup();
 if(empty($_GET['id'])) {
     $query = "SELECT * FROM products";
     $result = mysqli_query($conn, $query);
