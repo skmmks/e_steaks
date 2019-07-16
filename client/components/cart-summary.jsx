@@ -20,7 +20,7 @@ export default class CartSummary extends React.Component {
         </div>
       );
     }
-    const priceOfCartItems = this.props.cartState.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
+    const priceOfCartItems = this.props.cartState.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
     const itemsInCart = this.props.cartState.map((cartItem, index) => <CartSummaryItem key={index} cartItem={cartItem}/>);
     return (
       <div>
