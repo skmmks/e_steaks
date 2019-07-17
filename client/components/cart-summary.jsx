@@ -5,10 +5,15 @@ export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.handleReturnButton = this.handleReturnButton.bind(this);
+    this.handleCheckout = this.handleCheckout.bind(this);
   }
   handleReturnButton(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
+  }
+  handleCheckout(e) {
+    e.preventDefault();
+    this.props.setView('checkout', {});
   }
   render() {
     if (this.props.cartState.length === 0) {
@@ -28,7 +33,9 @@ export default class CartSummary extends React.Component {
         <div className='btn btn-primary ml-2' onClick={this.handleReturnButton}>Return to Catalog</div>
         <h3 className='mt-5'>My Cart</h3>
         {itemsInCart}
-        <h3 className='mt-4'>Total Price: ${((priceOfCartItems) / 100).toFixed(2)}</h3>
+        <h3 className='mt-4'>Total Price: ${((priceOfCartItems) / 100).toFixed(2)}
+          <div className='btn btn-primary ml-2 mr-5 float-right' onClick={this.handleCheckout}>Continue to Checkout</div>
+        </h3>
       </div>
     );
   }
