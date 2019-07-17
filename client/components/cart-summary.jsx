@@ -15,6 +15,7 @@ export default class CartSummary extends React.Component {
       return (
         <div>
           <h1>
+            <div className='btn btn-primary ml-2' onClick={this.handleReturnButton}>Return to Catalog</div>
             Your cart is empty
           </h1>
         </div>
