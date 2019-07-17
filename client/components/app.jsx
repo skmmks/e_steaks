@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       },
       cart: []
@@ -35,7 +35,7 @@ export default class App extends React.Component {
   }
   placeOrder(info) {
     info['cart'] = this.state.cart;
-    fetch('/api/orders./php', {
+    fetch('/api/orders.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(info)
@@ -107,7 +107,8 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <CheckoutForm cartState={this.state.cart} placeOrder={this.placeOrder}/>
+          <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
+          <CheckoutForm cartState={this.state.cart} placeOrder={this.placeOrder} setView={this.setView}/>
         </div>
       );
     }
