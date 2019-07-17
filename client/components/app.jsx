@@ -31,8 +31,22 @@ export default class App extends React.Component {
     this.getProducts();
     this.getCartItems();
   }
-  placeOrder() {
+  placeOrder(info) {
+    info.cartItems = this.state.cart;
+    fetch('/api/orders./php', {
 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(info)
+    })
+      .then(res => res.json())
+      .then(res => this.setState({
+        view: {
+          name: 'catalog',
+          params: {}
+        }
+      }))
+      .catch(error => error);
   }
   getCartItems() {
     fetch('/api/cart.php', {
