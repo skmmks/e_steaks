@@ -43,7 +43,8 @@ export default class App extends React.Component {
         view: {
           name: 'catalog',
           params: {}
-        }
+        },
+        cart: []
       }))
       .catch(error => error);
   }
