@@ -107,7 +107,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <CheckoutForm placeOrder={this.placeOrder}/>
+          <CheckoutForm cartState={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );
     }
