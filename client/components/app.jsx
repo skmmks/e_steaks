@@ -32,15 +32,14 @@ export default class App extends React.Component {
     this.getCartItems();
   }
   placeOrder(info) {
-    info.cartItems = this.state.cart;
+    info['cart'] = this.state.cart;
     fetch('/api/orders./php', {
-
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(info)
     })
       .then(res => res.json())
-      .then(res => this.setState({
+      .then(() => this.setState({
         view: {
           name: 'catalog',
           params: {}
