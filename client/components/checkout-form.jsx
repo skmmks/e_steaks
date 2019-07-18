@@ -40,18 +40,21 @@ export default class CheckoutForm extends React.Component {
     const priceOfCartItems = this.props.cartState.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <h1>Checkout</h1>
-          <p className='text-muted'>Order Total ${(priceOfCartItems / 100).toFixed(2)}</p>
-        </div>
-        <div>
-          <h3>Name <br/> <input type='text' onChange={this.handleName} value={this.state.name}/></h3>
-          <h3>Credit Card <br/><input type='text' onChange={this.handleCreditCard} value={this.state.creditCard}/></h3>
-          <h3>Shipping Address <br/><textarea type='text' onChange={this.handleAddress} value={this.state.address}></textarea></h3>
-        </div>
-        <div>
-          <div className='btn btn-primary ml-2 col-3' onClick={this.handleReturnButton}>Return to Catalog</div>
-          <input type="submit" className='btn btn-success col-3'/>
+        <div className='container'>
+          <div className='col'>
+            <h1 className='mt-3'>Checkout</h1>
+            <h5 className='text-muted mb-5'>Order Total ${(priceOfCartItems / 100).toFixed(2)}</h5>
+            <h5>Name</h5>
+            <input placeholder='Your Name Here' className='form-control mb-3' type='text' onChange={this.handleName} value={this.state.name}/>
+            <h5>Credit Card</h5>
+            <input placeholder='XXXX-XXXX-XXXX' className='form-control mb-3' type='text' onChange={this.handleCreditCard} value={this.state.creditCard}/>
+            <h5>Shipping Address</h5>
+            <textarea placeholder='Your Address Here' className='form-control mb-3' type='text' onChange={this.handleAddress} value={this.state.address}></textarea>
+            <div>
+              <button className='ml-2 col-5 btn btn-primary' onClick={this.handleReturnButton}>Return to Catalog</button>
+              <input className='ml-2 col-5 btn btn-warning float-right' type="submit"/>
+            </div>
+          </div>
         </div>
       </form>
     );
