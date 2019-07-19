@@ -1,12 +1,8 @@
 <?php
 
-header('Content-Type: application/json');
-require('functions.php');
-
-set_exception_handler('error_handler');
-
+require_once('functions.php');
 require_once('db_connection.php');
-
+set_exception_handler('error_handler');
 startup();
 
 if(empty($_GET['id'])) {
@@ -14,35 +10,42 @@ if(empty($_GET['id'])) {
         (SELECT `url` FROM `images` WHERE `productID` = p.id LIMIT 1) AS `image`
         FROM `products` AS p";
     $result = mysqli_query($conn, $query);
+    
     if(!$result) {
         throw new Exception('error with query: ' . mysqli_connect_error($conn));
     }
+
+    $data = [];
+
+    while($row = mysqli_fetch_assoc($result)) {
+        $data[] = $row;
+    }
+
     print(json_encode($data));
     } else if (!is_numeric($_GET['id'])) {
         throw new Exception('ID needs to be a number');
     } else {
     $id = $_GET['id'];
-    $query = "SELECT p.id, p.name, p.price, p.shortDescription, 
-    GROUP_CONCAT(images.url) as images
-    FROM `images` AS i
-    JOIN `products` AS p
-    ON i.productID = p.id
-    WHERE p.`id` = " . $id .
-    " GROUP BY products.id
-    ";
+    $query = "SELECT p.name, p.price, p.shortDescription, 
+    GROUP_CONCAT(i.url) as images
+    FROM `products` AS p
+    JOIN `images` AS i
+    ON  p.id = i.productID
+    WHERE p.id = $id
+    GROUP BY p.id";
+
     $result = mysqli_query($conn, $query);
-//    $resultRow = mysqli_fetch_assoc($result);
 
-    $data = [];
-    
-    while($resultRow = mysqli_fetch_assoc($result)) {
-        $data[] = $resultRow;
-    }
+    $data = []; 
+    while($row = mysqli_fetch_assoc($result)) {
+        $row['images'] = explode(",", $row['images']);
+        $data[] = $row;
+    };
 
-    if ($resultRow === null && !empty($_GET['id'])) {
+    if ($data === null) {
         throw new Exception('invalid ID: '. $id);
     } else {
-        print(json_encode($resultRow));
+        print(json_encode($data));
     }
 }
 ?>
