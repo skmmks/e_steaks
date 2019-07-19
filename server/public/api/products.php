@@ -10,7 +10,7 @@ if(empty($_GET['id'])) {
         (SELECT `url` FROM `images` WHERE `productID` = p.id LIMIT 1) AS `image`
         FROM `products` AS p";
     $result = mysqli_query($conn, $query);
-    
+
     if(!$result) {
         throw new Exception('error with query: ' . mysqli_connect_error($conn));
     }
@@ -27,24 +27,20 @@ if(empty($_GET['id'])) {
     } else {
     $id = $_GET['id'];
     $query = "SELECT p.name, p.price, p.shortDescription, 
-    GROUP_CONCAT(i.url) as images
-    FROM `products` AS p
-    JOIN `images` AS i
-    ON  p.id = i.productID
-    WHERE p.id = $id
-    GROUP BY p.id";
+        GROUP_CONCAT(i.url) as images
+        FROM `products` AS p
+        JOIN `images` AS i
+        ON  p.id = i.productID
+        WHERE p.id = $id
+        GROUP BY p.id";
 
     $result = mysqli_query($conn, $query);
-
-    $data = []; 
-    while($row = mysqli_fetch_assoc($result)) {
-        $row['images'] = explode(",", $row['images']);
-        $data[] = $row;
-    };
+    $data = mysqli_fetch_assoc($result);
 
     if ($data === null) {
         throw new Exception('invalid ID: '. $id);
     } else {
+        $data['images'] = explode(",", $data['images']);
         print(json_encode($data));
     }
 }
