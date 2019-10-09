@@ -3,10 +3,10 @@ import React from 'react';
 function ProductListItem(props) {
   return (
     <React.Fragment>
-      <img src={props.image} alt={props.name}/>
-      <span>{props.name}</span>
-      <span>{props.price}</span>
-      <span>{props.shortDesc}</span>
+      <div><img className="catalogImg" src={props.image} alt={props.name}/></div>
+      <div>{props.name}</div>
+      <div>{props.price}</div>
+      <div>{props.shortDesc}</div>
     </React.Fragment>
   )
 }
