@@ -3,9 +3,10 @@ import React from 'react';
 function ProductListItem(props) {
   return (
     <React.Fragment>
-      <h1>{props.name}</h1>
-      <h1>Product Price</h1>
-      <h1>Product Description</h1>
+      <img src={props.image} alt={props.name}/>
+      <span>{props.name}</span>
+      <span>{props.price}</span>
+      <span>{props.shortDesc}</span>
     </React.Fragment>
   )
 }
