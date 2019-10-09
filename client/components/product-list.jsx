@@ -7,4 +7,11 @@ export default class ProductList extends React.Component{
       products: []
     })
   }
+  getProducts() {
+    fetch('/api/products.php')
+      .then(res => res.json())
+      .then(data => this.setState({
+        products: data
+      }))
+  }
 }
