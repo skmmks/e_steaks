@@ -1,10 +1,9 @@
 import React from 'react';
 
-function ProductListItem() {
+function ProductListItem(props) {
   return (
     <React.Fragment>
-      <h1>Product Image</h1>
-      <h1>Product Name</h1>
+      <h1>{props.name}</h1>
       <h1>Product Price</h1>
       <h1>Product Description</h1>
     </React.Fragment>
