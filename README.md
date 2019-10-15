@@ -1,13 +1,3 @@
-# wicked-sales
-
-> - Maintained by: `dpaschal-lf`, `thebearingedge`
-
-A full stack LAMP & React shopping cart app.
-
-## Introduction
-
-For this project, you will be building a single-page React application and a dynamic PHP API.
-
 ## Getting Started
 
 1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
