@@ -4,9 +4,11 @@ export default class ProductDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: null
+            product: null
         }
     } 
+    componentDidMount() {
+    }
     render() {
         return null
     }
