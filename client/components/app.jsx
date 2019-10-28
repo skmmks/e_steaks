@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
+import ProductDetail from './product-details';
 
 export default class App extends React.Component {
   render() {
@@ -8,6 +9,7 @@ export default class App extends React.Component {
       <React.Fragment>
         <Header />
         <ProductList />
+        <ProductDetail />
       </React.Fragment>
     );
   }
