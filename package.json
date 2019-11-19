@@ -42,8 +42,7 @@
     "webpack-dev-server": "3.3.1"
   },
   "eslintIgnore": [
-    "/server",
-    "/client"
+    "server/public/main.js"
   ],
   "eslintConfig": {
     "env": {
