@@ -13,7 +13,7 @@ export default class Header extends React.Component {
     return (
       <div className='col'>
         <div className="row">
-          <div className="col text-right">
+          <div className="col text-right text-white bg-dark">
             <h5>Order Now To Recieve %20 Off!</h5>
           </div>
         </div>
