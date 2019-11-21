@@ -87,7 +87,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'landingPage') {
       return (
         <div>
-          <LandingPage />
+          <LandingPage setView={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'catalog') {
