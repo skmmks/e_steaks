@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 21, 2019 at 06:01 PM
+-- Generation Time: Nov 21, 2019 at 07:09 PM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.1
 
@@ -39,7 +39,11 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `price`, `image`) VALUES
 (1, 'Ribeye USDA PRIME ', 1999, 'https://tinyurl.com/rjq3yfr'),
-(2, 'New York Strip Prime', 2999, 'https://tinyurl.com/v7xeq8w');
+(2, 'New York Strip Prime', 2999, 'https://tinyurl.com/v7xeq8w'),
+(3, 'Filet Mignon', 3499, 'https://tinyurl.com/sm9pge4'),
+(5, 'T-Bone Prime', 3099, 'https://tinyurl.com/u5psj83'),
+(6, 'Wagyu Beef Rib', 5999, 'https://tinyurl.com/tmc9vey'),
+(7, 'WAGYU PICANHA', 7999, 'https://tinyurl.com/u3thh7f');
 
 --
 -- Indexes for dumped tables
@@ -59,7 +63,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
