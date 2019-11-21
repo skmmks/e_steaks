@@ -18,8 +18,11 @@ export default class Header extends React.Component {
           </div>
         </div>
         <div className="row">
-          <h2 className='col-10'> <i className="fas fa-store-alt"></i> The Steak Shop</h2>
-          <p className='mt-2 ml-5' onClick={this.handleSetView}>{this.props.cartItemCount} items <i className="fas fa-shopping-cart"></i></p>
+          <h2 className='col text-center'> <i className="fas fa-store-alt"></i> The Steak Shop</h2>
+
+        </div>
+        <div className="row">
+          <p className="col text-right mr-3" onClick={this.handleSetView}>My Cart <i className="fas fa-shopping-cart"></i> ({this.props.cartItemCount})</p>
         </div>
       </div>
     );
