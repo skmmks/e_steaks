@@ -43,17 +43,19 @@ export default class LandingPage extends React.Component {
               </ModalBody>
               <ModalFooter>
                 <Button onClick={this.toggle}>
-                  I Understand
+                  <div onClick={this.handleContinueButton}>
+                    <p>I Understand,<br /> Continue to Catalog</p>
+                  </div>
                 </Button>
               </ModalFooter>
             </Modal>
           </div>
         </div>
-        <div>
+        {/* <div>
           <div onClick={this.handleContinueButton} className='btn btn-primary my-2'>
             <h3>Continue To Catalog</h3>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
