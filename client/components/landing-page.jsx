@@ -14,9 +14,6 @@ export default class LandingPage extends React.Component {
     e.preventDefault();
     this.props.setView('catalog', {});
   }
-  // landingPageModal(e) {
-  //   e.preventDefault();
-  // }
   toggle() {
     this.setState(previousState => ({
         modal: !previousState.modal
@@ -24,10 +21,10 @@ export default class LandingPage extends React.Component {
   }
   render() {
     return (
-      <div className="text-center">
+      <div className="text-center landingPage">
         <div>
           <h1>Welcome to Heritage Farm Steaks</h1>
-          <img src="images/logo.png" alt=""/>
+          <img src="images/logo.png" alt="Heritage Farm Logo"/>
         </div>
         <div>
           <div className='btn btn-primary my-2'>
@@ -51,11 +48,6 @@ export default class LandingPage extends React.Component {
             </Modal>
           </div>
         </div>
-        {/* <div>
-          <div onClick={this.handleContinueButton} className='btn btn-primary my-2'>
-            <h3>Continue To Catalog</h3>
-          </div>
-        </div> */}
       </div>
     );
   }
