@@ -36,7 +36,7 @@ export default class LandingPage extends React.Component {
             <h3>Disclaimer</h3>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
               <ModalBody className="text-center"> 
-                Text
+              <h1>Please note that this is a demo site and not a real online store.  </h1>
               </ModalBody>
               <ModalFooter>
                 <Button onClick={this.toggle}>
