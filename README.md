@@ -39,19 +39,6 @@ For this project, you will be building a single-page React application and a dyn
    ```
    You should receive `200 OK` response containing a JSON `Array` of products.
 
-## Features
-
-There are [Markdown](https://guides.github.com/features/mastering-markdown/) files located in the `features` directory of this project that contain useful links and task lists for each feature of the application.
-
-For each Markdown file, create a new Issue on your fork's GitHub repository and paste the content of the Markdown file into the **first** comment box. Give the Issue a clear title (usually the heading at the top of the Markdown file).
-
-It is possible that your fork does not have Issues enabled by default.
-
-![Issues Disabled](features/assets/issues-disabled.png)
-
-If you do not see an **Issues** tab at the top of your fork's page, then go to its **Settings** tab and check the box to enable **Issues**.
-
-![Issues Enabled](features/assets/issues-enabled.png)
 
 ## A note about Issue numbers
 
