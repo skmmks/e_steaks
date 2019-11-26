@@ -23,8 +23,8 @@ export default class LandingPage extends React.Component {
     return (
       <div className="text-center landingPage">
         <div>
-          <h1>Welcome to Heritage Farm Steaks</h1>
-          <img src="images/logo.png" alt="Heritage Farm Logo"/>
+          <h1> <img src="images/logo.png" alt="Heritage Farm Logo"/> Welcome to Heritage Farm Steaks</h1>
+          
         </div>
         <div>
           <div className='btn btn-primary my-2'>
