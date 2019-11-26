@@ -8,11 +8,17 @@ export default class LandingPage extends React.Component {
       modal : false
     }
     this.handleContinueButton = this.handleContinueButton.bind(this);
+    this.handleAboutButton = this.handleAboutButton.bind(this); 
     this.toggle = this.toggle.bind(this); 
   }
   handleContinueButton(e) {
     e.preventDefault();
     this.props.setView('catalog', {});
+  }
+  handleAboutButton(e) {
+    e.preventDefault(); 
+    this.props.setView('aboutMe', {}); 
+    console.log('aboutmebutton pressed')
   }
   toggle() {
     this.setState(previousState => ({
@@ -27,7 +33,7 @@ export default class LandingPage extends React.Component {
           
         </div>
         <div>
-          <div className='btn btn-primary my-2'>
+          <div onClick={this.handleAboutButton} className='btn btn-primary my-2'>
             <h3>About</h3>
           </div>
         </div>
