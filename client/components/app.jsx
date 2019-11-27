@@ -91,6 +91,12 @@ export default class App extends React.Component {
           <LandingPage setView={this.setView} />
         </div>
       );
+    } else if (this.state.view.name === 'aboutMe') {
+      return (
+        <div>
+          <AboutMe /> 
+        </div>
+      );
     } else if (this.state.view.name === 'catalog') {
       return (
         <div>
