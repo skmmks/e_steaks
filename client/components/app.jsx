@@ -6,7 +6,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
-import AboutMe from './about-me';
+import AboutMe from './about-me.js';
 
 export default class App extends React.Component {
   constructor(props) {
