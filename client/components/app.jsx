@@ -6,6 +6,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
+import AboutMe from './about-me';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -88,6 +89,12 @@ export default class App extends React.Component {
       return (
         <div>
           <LandingPage setView={this.setView} />
+        </div>
+      );
+    } else if (this.state.view.name === 'aboutMe') {
+      return (
+        <div>
+          <AboutMe /> 
         </div>
       );
     } else if (this.state.view.name === 'catalog') {
