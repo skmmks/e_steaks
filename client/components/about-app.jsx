@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class AboutMe extends React.Component {
+export default class AboutApp extends React.Component {
     constructor(props) {
         super(props);
         this.handleReturn = this.handleReturn.bind(this); 
@@ -11,7 +11,7 @@ export default class AboutMe extends React.Component {
     render() {
         return (
             <div onClick={this.handleReturn}>
-                About
+                 Return
             </div>
         )
     }
