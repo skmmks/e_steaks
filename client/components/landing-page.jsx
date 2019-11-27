@@ -17,8 +17,7 @@ export default class LandingPage extends React.Component {
   }
   handleAboutButton(e) {
     e.preventDefault(); 
-    this.props.setView('aboutMe', {}); 
-    console.log('aboutmebutton pressed')
+    this.props.setView('aboutApp', {}); 
   }
   toggle() {
     this.setState(previousState => ({
