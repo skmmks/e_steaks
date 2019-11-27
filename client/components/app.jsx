@@ -94,7 +94,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'aboutMe') {
       return (
         <div>
-          <AboutMe /> 
+          <AboutMe setView={this.setView}/> 
         </div>
       );
     } else if (this.state.view.name === 'catalog') {

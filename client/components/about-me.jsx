@@ -2,7 +2,8 @@ import React from 'react'
 
 export default class AboutMe extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.handleReturn = this.handleReturn.bind(this); 
     }
     handleReturn() {
         this.props.setView('landingPage', {})
