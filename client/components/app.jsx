@@ -7,6 +7,7 @@ import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
 import AboutApp from './about-app';
+import Navbar from './navbar';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -88,6 +89,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'landingPage') {
       return (
         <div>
+          <Navbar />
           <LandingPage setView={this.setView} />
         </div>
       );
