@@ -102,6 +102,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'catalog') {
       return (
         <div>
+          <Navbar /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductList products={this.state.products} view={this.setView}/>
         </div>
@@ -109,6 +110,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div>
+          <Navbar /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
         </div>
