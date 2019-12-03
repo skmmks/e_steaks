@@ -7,7 +7,7 @@ import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
 import AboutApp from './about-app';
-import Navbar from './navbar';
+import Navigation from './navigation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -89,7 +89,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'landingPage') {
       return (
         <div>
-          <Navbar />
+          <Navigation setView={this.setView} />
           <LandingPage setView={this.setView} />
         </div>
       );
@@ -102,7 +102,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Navbar /> 
+          <Navigation setView={this.setView} /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductList products={this.state.products} view={this.setView}/>
         </div>
@@ -110,7 +110,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Navbar /> 
+          <Navigation setView={this.setView} /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
         </div>
