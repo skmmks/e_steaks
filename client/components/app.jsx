@@ -89,7 +89,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'landingPage') {
       return (
         <div>
-          <Navbar />
+          <Navbar setView={this.setView} />
           <LandingPage setView={this.setView} />
         </div>
       );
@@ -102,7 +102,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Navbar /> 
+          <Navbar setView={this.setView} /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductList products={this.state.products} view={this.setView}/>
         </div>
@@ -110,7 +110,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Navbar /> 
+          <Navbar setView={this.setView} /> 
           <Header cartItemCount={this.state.cart.length} setView={this.setView}/>
           <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
         </div>
