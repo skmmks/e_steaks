@@ -11,6 +11,9 @@ import {
 export default class Navigation extends React.Component {
     constructor(props) {
         super(props); 
+        this.state = {
+            isOpen: false
+        }
         this.handleLandingPage = this.handleLandingPage.bind(this); 
         this.toggle = this.toggle.bind(this);
     }
