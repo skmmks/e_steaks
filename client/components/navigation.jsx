@@ -17,6 +17,9 @@ export default class Navigation extends React.Component {
         e.preventDefault(); 
         this.props.setView('landingPage', {}); 
     }
+    toggle = () => {
+        setIsOpen(!isOpen)
+    }
     render() {
         return (
             <div>
