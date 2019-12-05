@@ -22,7 +22,7 @@ export default class Header extends React.Component {
 
         </div>
         <div className="row">
-          <p className="col text-right mr-3" onClick={this.handleSetView}>My Cart <i className="fas fa-shopping-cart"></i> ({this.props.cartItemCount})</p>
+          <div className="col text-right mr-3" ><i className="fas fa-shopping-cart" onClick={this.handleSetView}></i> ({this.props.cartItemCount})</div>
         </div>
       </div>
     );
