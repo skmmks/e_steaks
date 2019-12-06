@@ -31,7 +31,6 @@ class ProductDetails extends React.Component {
   handleAddToCart(e) {
     e.preventDefault();
     this.props.addToCart(this.state.product, this.state.quantity);
-    console.log(this.state.quantity)
   }
   componentDidMount() {
     const paramID = this.props.params.id;
