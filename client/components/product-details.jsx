@@ -12,11 +12,17 @@ class ProductDetails extends React.Component {
     this.increment = this.increment.bind(this); 
     this.decrement = this.decrement.bind(this); 
   }
-  increment() {
-    this.setState(prevState => {value: ++prevState.value});
+  increment(e) {
+    e.preventDefault(); 
+    this.setState({
+      value: this.state.value + 1 
+    })
   }
-  decrement() {
-    this.setState(prevState => {value: prevState.value > 0? --prevState.value : 0});
+  decrement(e) {
+    e.preventDefault(); 
+    this.setState({
+      value: this.state.value - 1
+    })
   }
   handleReturnButton(e) {
     e.preventDefault();
@@ -56,9 +62,15 @@ class ProductDetails extends React.Component {
             <h5>
               {this.state.product.shortDescription}
             </h5>
-            <i class="far fa-minus-square"></i>
-            <input type="text" value="1"/>
-            <i class="far fa-plus-square"></i>
+            <div>
+              <button onClick={this.decrement}>
+                &mdash;
+              </button>
+              <input value={this.state.value} readonly />
+              <button onClick={this.increment}>
+                &#xff0b;
+              </button>  
+            </div>  
             <div className='btn btn-warning mt-4' onClick={this.handleAddToCart}>
               Add To Cart
             </div>
