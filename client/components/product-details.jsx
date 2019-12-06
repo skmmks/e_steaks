@@ -41,6 +41,9 @@ class ProductDetails extends React.Component {
             <h1>{this.state.product.name}</h1>
             <h4 className='text-muted'>${((this.state.product.price) / 100).toFixed(2)}</h4>
             <h5>{this.state.product.shortDescription}</h5>
+            <i class="far fa-minus-square"></i>
+            <input type="text" value="1"/>
+            <i class="far fa-plus-square"></i>
             <div className='btn btn-warning mt-4' onClick={this.handleAddToCart}>
               Add To Cart
             </div>
