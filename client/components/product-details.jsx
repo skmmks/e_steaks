@@ -10,9 +10,13 @@ class ProductDetails extends React.Component {
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.increment = this.increment.bind(this); 
+    this.decrement = this.decrement.bind(this); 
   }
   increment() {
     this.setState(prevState => {value: ++prevState.value});
+  }
+  decrement() {
+    this.setState(prevState => {value: prevState.value > 0? --prevState.value : 0});
   }
   handleReturnButton(e) {
     e.preventDefault();
