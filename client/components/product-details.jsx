@@ -4,10 +4,15 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null, 
+      value: 1
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.increment = this.increment.bind(this); 
+  }
+  increment() {
+    this.setState(prevState => {value: ++prevState.value});
   }
   handleReturnButton(e) {
     e.preventDefault();
