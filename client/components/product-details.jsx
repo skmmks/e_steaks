@@ -5,7 +5,7 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null, 
-      value: 1
+      quantity: 1
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
@@ -15,13 +15,13 @@ class ProductDetails extends React.Component {
   increment(e) {
     e.preventDefault(); 
     this.setState({
-      value: this.state.value + 1 
+      quantity: this.state.quantity + 1 
     })
   }
   decrement(e) {
     e.preventDefault(); 
     this.setState({
-      value: this.state.value - 1
+      quantity: this.state.quantity - 1
     })
   }
   handleReturnButton(e) {
@@ -30,7 +30,8 @@ class ProductDetails extends React.Component {
   }
   handleAddToCart(e) {
     e.preventDefault();
-    this.props.addToCart(this.state.product);
+    this.props.addToCart(this.state.product, this.state.quantity);
+    console.log(this.state.quantity)
   }
   componentDidMount() {
     const paramID = this.props.params.id;
@@ -66,7 +67,7 @@ class ProductDetails extends React.Component {
               <button onClick={this.decrement}>
                 &mdash;
               </button>
-              <input value={this.state.value} readonly />
+              <input value={this.state.quantity} readOnly />
               <button onClick={this.increment}>
                 &#xff0b;
               </button>  
