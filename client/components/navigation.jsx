@@ -37,7 +37,7 @@ export default class Navigation extends React.Component {
                 <Navbar>
                     <NavbarBrand onClick={this.handleLandingPage}>Heritage Farms</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} /> 
-                    <NavItem onClick={this.handleDisplayCart}>cart</NavItem> 
+                    <NavItem onClick={this.handleDisplayCart}><i className="fas fa-shopping-cart"></i></NavItem> 
                     <NavItem>about</NavItem> 
                 </Navbar>
             </div>
