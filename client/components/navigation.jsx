@@ -25,7 +25,6 @@ export default class Navigation extends React.Component {
     handleDisplayCart(e) {
         e.preventDefault(); 
         this.props.setView('cart', {});
-        console.log('cart was clicked')
     }
     toggle() {
         this.setState({
