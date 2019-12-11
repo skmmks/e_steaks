@@ -44,7 +44,11 @@ export default class Navigation extends React.Component {
                                     <i className="fas fa-shopping-cart"></i> 
                                 </NavLink>
                             </NavItem>
-                            <NavItem>about</NavItem> 
+                            <NavItem>
+                                <NavLink>
+                                    about
+                                </NavLink>
+                            </NavItem> 
                         </Nav>
                     </Collapse>
  
