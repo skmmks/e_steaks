@@ -16,6 +16,7 @@ export default class Navigation extends React.Component {
         }
         this.handleLandingPage = this.handleLandingPage.bind(this); 
         this.handleDisplayCart = this.handleDisplayCart.bind(this); 
+        this.handleDisplayAbout = this.handleDisplayAbout.bind(this);
         this.toggle = this.toggle.bind(this);
     }
     handleLandingPage(e) {
@@ -25,6 +26,10 @@ export default class Navigation extends React.Component {
     handleDisplayCart(e) {
         e.preventDefault(); 
         this.props.setView('cart', {});
+    }
+    handleDisplayAbout(e) {
+        e.preventDefault(); 
+        this.props.setView('aboutApp', {});
     }
     toggle() {
         this.setState({
@@ -45,7 +50,7 @@ export default class Navigation extends React.Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink>
+                                <NavLink onClick={this.handleDisplayAbout}>
                                     about
                                 </NavLink>
                             </NavItem> 
