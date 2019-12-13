@@ -40,7 +40,7 @@ export default class Navigation extends React.Component {
         return (
             <div>
                 <Navbar>
-                    <NavbarBrand onClick={this.handleLandingPage}>Heritage Farms</NavbarBrand>
+                    <NavbarBrand onClick={this.handleLandingPage}>Heritage Farms MollyJogger</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} /> 
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
