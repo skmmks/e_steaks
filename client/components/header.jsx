@@ -13,16 +13,12 @@ export default class Header extends React.Component {
     return (
       <div className='col'>
         <div className="row">
-          <div className="col text-right text-white bg-dark">
-            <h5>Order Before December 1st To Recieve 20% Off!</h5>
+          <div className="col text-center text-white bg-dark">
+            <h5>FREE SHIPPING ON ORDERS $49 OR MORE</h5>
           </div>
         </div>
         <div className="row">
-          <h2 className='col text-center'> <i className="fas fa-store-alt"></i> Hartland Farms</h2>
-
-        </div>
-        <div className="row">
-          <div className="col text-right mr-3" ><i className="fas fa-shopping-cart" onClick={this.handleSetView}></i> ({this.props.cartItemCount})</div>
+          <div className="col text-right mr-3" >Login | Create Account <i className="fas fa-shopping-cart" onClick={this.handleSetView}></i> ({this.props.cartItemCount})</div>
         </div>
       </div>
     );
