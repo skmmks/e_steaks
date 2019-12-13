@@ -89,6 +89,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'landingPage') {
       return (
         <div>
+          <Header cartItemCount={this.state.cart.length} setView={this.setView} /> 
           <Navigation setView={this.setView} />
           <LandingPage setView={this.setView} />
         </div>
