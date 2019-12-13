@@ -18,7 +18,7 @@ export default class Header extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col text-right mr-3" >Login | Create Account <i className="fas fa-shopping-cart" onClick={this.handleSetView}></i> ({this.props.cartItemCount})</div>
+          <div className="col text-right headerBar" >Login | Create Account <i className="fas fa-shopping-cart" onClick={this.handleSetView}></i> ({this.props.cartItemCount})</div>
         </div>
       </div>
     );

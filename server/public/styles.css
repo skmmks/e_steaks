@@ -7,3 +7,11 @@
     width: 100vw;
     position: fixed;
   }
+  .navigationBar {
+    background-color: #FFF;
+    color:darkolivegreen;  
+  }
+  .headerBar {
+    background-color: darkolivegreen;
+    color: #FFF;
+  }

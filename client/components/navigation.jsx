@@ -38,7 +38,7 @@ export default class Navigation extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="navigationBar">
                 {/* mollyjogger */}
                 <Navbar>
                     <NavbarBrand onClick={this.handleLandingPage}>Heritage Farms</NavbarBrand>
