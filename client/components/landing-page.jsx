@@ -32,12 +32,12 @@ export default class LandingPage extends React.Component {
           
         </div>
         <div>
-          <div onClick={this.handleAboutButton} className='btn btn-primary my-2'>
+          <div onClick={this.handleAboutButton} className='btn btn-success my-2'>
             <h3>About</h3>
           </div>
         </div>
         <div>
-          <div onClick={this.toggle} className='btn btn-primary my-2'>
+          <div onClick={this.toggle} className='btn btn-success my-2'>
             <h3>Disclaimer</h3>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
               <ModalBody className="text-center"> 
