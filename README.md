@@ -1,4 +1,4 @@
-# wicked-sales
+# wicked-sales Hello!
 
 A full stack LAMP & React shopping cart app.
 
@@ -10,17 +10,17 @@ For this project, you will be building a single-page React application and a dyn
 
 1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
 2. Check out a `dev` branch and push it to `origin`.
-    ```
-    git push origin dev
-    ```
+   ```
+   git push origin dev
+   ```
 3. Install all dependencies in `package.json` with NPM.
-    ```
-    npm install
-    ```
+   ```
+   npm install
+   ```
 4. Add the `wicked-sales.localhost` site to Apache by copying the provided virtual host configuration in the `server` directory to `/etc/apache2/sites-available`.
-    ```
-    sudo cp server/wicked-sales.localhost.conf /etc/apache2/sites-available
-    ```
+   ```
+   sudo cp server/wicked-sales.localhost.conf /etc/apache2/sites-available
+   ```
 5. Enable the `wicked-sales.locahost` site.
    ```
    sudo a2ensite wicked-sales.localhost
@@ -38,7 +38,6 @@ For this project, you will be building a single-page React application and a dyn
    http get localhost:3000/api/products.php
    ```
    You should receive `200 OK` response containing a JSON `Array` of products.
-
 
 ## A note about Issue numbers
 

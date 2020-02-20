@@ -14,7 +14,7 @@ if ($method == 'GET') {
   http_response_code(404);
   print(json_encode([
     'error' => 'Not Found',
-    'message' => "Cannot $method /api/cart.php"
+    'message' => "Cannot $method /api/cart.php Some text" 
   ]));
 }
 
