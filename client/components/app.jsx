@@ -86,19 +86,24 @@ export default class App extends React.Component {
       )
       .catch(error => error);
   }
-  addToCart(product) {
-    fetch("/api/cart.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product)
-    })
-      .then(res => res.json())
-      .then(res =>
-        this.setState({
-          cart: this.state.cart.concat(res)
-        })
-      )
-      .catch(error => error);
+  addToCart(product, productQuantity) {
+    product.quantity = 0;
+
+    let currentCart = JSON.parse(localStorage.getItem("cart"));
+    let checkIfProductAdded = currentCart.findIndex(itemIndex => {
+      return itemIndex.id === product.id;
+    });
+    if (checkIfProductAdded > -1) {
+      currentCart[checkIfProductAdded].quantity += productQuantity;
+    } else if (isNaN(product.quantity)) {
+      product.quantity = productQuantity;
+      currentCart.push(product);
+    } else {
+      product.quantity = product.quantity + productQuantity;
+      currentCart.push(product);
+    }
+    this.setState({ cart: currentCart });
+    localStorage.cart = JSON.stringify(currentCart);
   }
   render() {
     if (this.state.view.name === "landingPage") {
