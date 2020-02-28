@@ -105,6 +105,15 @@ export default class App extends React.Component {
     this.setState({ cart: currentCart });
     localStorage.cart = JSON.stringify(currentCart);
   }
+  removeFromCart(productId) {
+    let currentCart = JSON.parse(localStorage.getItem("cart"));
+    let itemIndex = currentCart.findIndex(steak => {
+      return steak.id === productId;
+    });
+    currentCart.splice(itemIndex, 1);
+    this.setState({ cart: currentCart });
+    localStorage.cart = JSON.stringify(currentCart);
+  }
   render() {
     if (this.state.view.name === "landingPage") {
       return (
