@@ -23,6 +23,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
   setView(name, params) {
     this.setState({
@@ -165,7 +166,11 @@ export default class App extends React.Component {
             cartItemCount={this.state.cart.length}
             setView={this.setView}
           />
-          <CartSummary cartState={this.state.cart} setView={this.setView} />
+          <CartSummary
+            removeFromCart={this.removeFromCart}
+            cartState={this.state.cart}
+            setView={this.setView}
+          />
         </div>
       );
     } else if (this.state.view.name === "checkout") {
