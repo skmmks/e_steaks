@@ -1,32 +1,32 @@
-import React from 'react';
+import React from "react";
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null, 
+      product: this.props.item,
       quantity: 1
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.increment = this.increment.bind(this); 
-    this.decrement = this.decrement.bind(this); 
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
   }
   increment(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     this.setState({
-      quantity: this.state.quantity + 1 
-    })
+      quantity: this.state.quantity + 1
+    });
   }
   decrement(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     this.setState({
       quantity: this.state.quantity - 1
-    })
+    });
   }
   handleReturnButton(e) {
     e.preventDefault();
-    this.props.setView('catalog', {});
+    this.props.setView("catalog", {});
   }
   handleAddToCart(e) {
     e.preventDefault();
@@ -40,44 +40,48 @@ class ProductDetails extends React.Component {
         this.setState({
           product: res
         });
-      }
-      );
+      });
   }
   render() {
     if (!this.state.product) return null;
     return (
       <div>
-        <div onClick={this.handleReturnButton} className={'btn btn-primary ml-2'}>Back to Catalog</div>
-        <div className='row'>
+        <div
+          onClick={this.handleReturnButton}
+          className={"btn btn-primary ml-2"}
+        >
+          Back to Catalog
+        </div>
+        <div className="row">
           <div className="col-lg-5 ml-5 mt-2">
-            <img height='400px' width='100%' src={this.state.product.image} alt="Product Image"/>
+            <img
+              height="400px"
+              width="100%"
+              src={this.state.product.image}
+              alt="Product Image"
+            />
           </div>
           <div className="col-lg-4">
-            <h1>
-              {this.state.product.name}
-            </h1>
-            <h4 className='text-muted'>
-              ${((this.state.product.price) / 100).toFixed(2)}
+            <h1>{this.state.product.name}</h1>
+            <h4 className="text-muted">
+              ${(this.state.product.price / 100).toFixed(2)}
             </h4>
-            <h5>
-              {this.state.product.shortDescription}
-            </h5>
+            <h5>{this.state.product.shortDescription}</h5>
             <div>
-              <button onClick={this.decrement}>
-                &mdash;
-              </button>
+              <button onClick={this.decrement}>&mdash;</button>
               <input value={this.state.quantity} readOnly />
-              <button onClick={this.increment}>
-                &#xff0b;
-              </button>  
-            </div>  
-            <div className='btn btn-warning mt-4' onClick={this.handleAddToCart}>
+              <button onClick={this.increment}>&#xff0b;</button>
+            </div>
+            <div
+              className="btn btn-warning mt-4"
+              onClick={this.handleAddToCart}
+            >
               Add To Cart
             </div>
           </div>
         </div>
         <div className="row">
-          <div className='col mx-5'>{this.state.product.longDescription}</div>
+          <div className="col mx-5">{this.state.product.longDescription}</div>
         </div>
       </div>
     );
