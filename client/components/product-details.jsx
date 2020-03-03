@@ -14,15 +14,14 @@ class ProductDetails extends React.Component {
   }
   increment(e) {
     e.preventDefault();
-    this.setState({
-      quantity: this.state.quantity + 1
-    });
+    this.setState({ quantity: this.state.quantity + 1 });
   }
   decrement(e) {
     e.preventDefault();
-    this.setState({
-      quantity: this.state.quantity - 1
-    });
+    if (this.state.quantity === 1) {
+      return;
+    }
+    this.setState({ quantity: this.state.quantity - 1 });
   }
   handleReturnButton(e) {
     e.preventDefault();

@@ -45,22 +45,25 @@ export default class App extends React.Component {
     }
   }
   placeOrder(info) {
-    info["cart"] = this.state.cart;
-    fetch("/api/orders.php", {
+    let currentCart = [...this.state.cart];
+    let orderDetails = {
+      info,
+      cart: JSON.stringify(currentCart)
+    };
+    currentCart.map(product => {
+      delete product.description;
+      delete product.image;
+    });
+    fetch("./api/orders.php", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(info)
+      body: JSON.stringify(orderDetails),
+      headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
-      .then(() =>
-        this.setState({
-          view: {
-            name: "catalog",
-            params: {}
-          },
-          cart: []
-        })
-      )
+      .then(() => {
+        localStorage.cart = JSON.stringify([]);
+        this.setState({ cart: [] });
+      })
       .catch(error => error);
   }
   getCartItems() {
@@ -156,6 +159,7 @@ export default class App extends React.Component {
             params={this.state.view.params}
             setView={this.setView}
             addToCart={this.addToCart}
+            item={this.state.products[this.state.view.params.id - 1]}
           />
         </div>
       );
