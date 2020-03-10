@@ -1,4 +1,4 @@
-# wicked-sales Hello!
+# E-Steaks
 
 A full stack LAMP & React shopping cart app.
 
