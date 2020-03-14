@@ -55,9 +55,7 @@ export default class Header extends React.Component {
                 <i className='fas fa-utensils fa-lg' onClick={this.handleCatalogView}></i>
               </NavLink>
               <NavLink className='pointer-hover'>
-                <i className='fas fa-shopping-cart fa-lg' onClick={this.handleCartView}>
-                  {orders}
-                </i>
+                <i className='fas fa-shopping-cart fa-lg' onClick={this.handleCartView}></i>
               </NavLink>
               <NavLink className='pointer-hover'>
                 <i className='fas fa-question-circle fa-lg' onClick={this.handleAboutAppView}></i>
