@@ -1,13 +1,13 @@
-import React from "react";
-import Header from "./header";
+import React from 'react';
+import Header from './header';
 
-import ProductList from "./product-list";
-import ProductDetails from "./product-details";
-import CartSummary from "./cart-summary";
-import CheckoutForm from "./checkout-form";
-import LandingPage from "./landing-page";
-import AboutApp from "./about-app";
-import Navigation from "./navigation";
+import ProductList from './product-list';
+import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
+import LandingPage from './landing-page';
+import AboutApp from './about-app';
+import Navigation from './navigation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: "landingPage",
+        name: 'landingPage',
         params: {}
       },
       cart: []
@@ -35,7 +35,6 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     this.getProducts();
-    // this.getCartItems();
     if (!localStorage.cart) {
       localStorage.cart = JSON.stringify(this.state.cart);
     } else {
@@ -54,10 +53,10 @@ export default class App extends React.Component {
       delete product.description;
       delete product.image;
     });
-    fetch("./api/orders.php", {
-      method: "POST",
+    fetch('./api/orders.php', {
+      method: 'POST',
       body: JSON.stringify(orderDetails),
-      headers: { "Content-Type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json())
       .then(() => {
@@ -67,8 +66,8 @@ export default class App extends React.Component {
       .catch(error => error);
   }
   getCartItems() {
-    fetch("/api/cart.php", {
-      method: "GET"
+    fetch('/api/cart.php', {
+      method: 'GET'
     })
       .then(res => res.json())
       .then(cartItems =>
@@ -79,8 +78,8 @@ export default class App extends React.Component {
       .catch(error => error);
   }
   getProducts() {
-    fetch("/api/products.php", {
-      method: "GET"
+    fetch('/api/products.php', {
+      method: 'GET'
     })
       .then(response => response.json())
       .then(retrieveProducts =>
@@ -93,7 +92,7 @@ export default class App extends React.Component {
   addToCart(product, productQuantity) {
     product.quantity = 0;
 
-    let currentCart = JSON.parse(localStorage.getItem("cart"));
+    let currentCart = JSON.parse(localStorage.getItem('cart'));
     let checkIfProductAdded = currentCart.findIndex(itemIndex => {
       return itemIndex.id === product.id;
     });
@@ -110,7 +109,7 @@ export default class App extends React.Component {
     localStorage.cart = JSON.stringify(currentCart);
   }
   removeFromCart(productId) {
-    let currentCart = JSON.parse(localStorage.getItem("cart"));
+    let currentCart = JSON.parse(localStorage.getItem('cart'));
     let itemIndex = currentCart.findIndex(steak => {
       return steak.id === productId;
     });
@@ -119,42 +118,30 @@ export default class App extends React.Component {
     localStorage.cart = JSON.stringify(currentCart);
   }
   render() {
-    if (this.state.view.name === "landingPage") {
+    if (this.state.view.name === 'landingPage') {
       return (
-        <div>
-          <Header
-            cartItemCount={this.state.cart.length}
-            setView={this.setView}
-          />
-          <Navigation setView={this.setView} />
+        <React.Fragment>
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
           <LandingPage setView={this.setView} />
-        </div>
+        </React.Fragment>
       );
-    } else if (this.state.view.name === "aboutApp") {
+    } else if (this.state.view.name === 'aboutApp') {
       return (
         <div>
           <AboutApp setView={this.setView} />
         </div>
       );
-    } else if (this.state.view.name === "catalog") {
+    } else if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Navigation setView={this.setView} />
-          <Header
-            cartItemCount={this.state.cart.length}
-            setView={this.setView}
-          />
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
           <ProductList products={this.state.products} view={this.setView} />
         </div>
       );
-    } else if (this.state.view.name === "details") {
+    } else if (this.state.view.name === 'details') {
       return (
         <div>
-          <Navigation setView={this.setView} />
-          <Header
-            cartItemCount={this.state.cart.length}
-            setView={this.setView}
-          />
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
           <ProductDetails
             params={this.state.view.params}
             setView={this.setView}
@@ -163,32 +150,18 @@ export default class App extends React.Component {
           />
         </div>
       );
-    } else if (this.state.view.name === "cart") {
+    } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <Header
-            cartItemCount={this.state.cart.length}
-            setView={this.setView}
-          />
-          <CartSummary
-            removeFromCart={this.removeFromCart}
-            cartState={this.state.cart}
-            setView={this.setView}
-          />
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <CartSummary removeFromCart={this.removeFromCart} cartState={this.state.cart} setView={this.setView} />
         </div>
       );
-    } else if (this.state.view.name === "checkout") {
+    } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Header
-            cartItemCount={this.state.cart.length}
-            setView={this.setView}
-          />
-          <CheckoutForm
-            cartState={this.state.cart}
-            placeOrder={this.placeOrder}
-            setView={this.setView}
-          />
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <CheckoutForm cartState={this.state.cart} placeOrder={this.placeOrder} setView={this.setView} />
         </div>
       );
     }
