@@ -1,17 +1,20 @@
 .landingPage {
-    background-image: url("./images/steak_dinner.jpg"), url("./images/grass-field.jpg");
-    background-size: 50% 100%;
-    background-repeat: no-repeat, no-repeat;
-    background-position: left, right;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-  }
-  .navigationBar {
-    background-color: #FFF;
-    color:darkolivegreen;  
-  }
-  .headerBar {
-    background-color: darkolivegreen;
-    color: #FFF;
-  }
+  background-image: url('./images/steak_dinner.jpg'), url('./images/grass-field.jpg');
+  background-size: 50% 100%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: left, right;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+.navigationBar {
+  background-color: #fff;
+  color: darkolivegreen;
+}
+.headerBar {
+  background-color: darkolivegreen;
+  color: #fff;
+}
+.pointer-hover {
+  cursor: pointer;
+}

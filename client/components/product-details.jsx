@@ -1,20 +1,47 @@
-import React from "react";
+import React from 'react';
+import { CardImg, Button, Col, Row, Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class ProductDetails extends React.Component {
+export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: this.props.item,
-      quantity: 1
+      quantity: 1,
+      modal: false
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.increment = this.increment.bind(this);
+    this.handleContinueClick = this.handleContinueClick.bind(this);
+    this.handleCartClick = this.handleCartClick.bind(this);
     this.decrement = this.decrement.bind(this);
+    this.increment = this.increment.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
-  increment(e) {
+  handleReturnButton(e) {
     e.preventDefault();
-    this.setState({ quantity: this.state.quantity + 1 });
+    this.props.setView('catalog', {});
+  }
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+  handleAddToCart(e) {
+    e.preventDefault();
+    this.toggle();
+    this.props.addToCart(this.state.product, this.state.quantity);
+  }
+  handleContinueClick(e) {
+    e.preventDefault();
+    this.setState({ quantity: 1 });
+    this.toggle();
+    this.props.setView('catalog', {});
+  }
+  handleCartClick(e) {
+    e.preventDefault();
+    this.setState({ quantity: 1 });
+    this.toggle();
+    this.props.setView('cart', {});
   }
   decrement(e) {
     e.preventDefault();
@@ -23,67 +50,56 @@ class ProductDetails extends React.Component {
     }
     this.setState({ quantity: this.state.quantity - 1 });
   }
-  handleReturnButton(e) {
+  increment(e) {
     e.preventDefault();
-    this.props.setView("catalog", {});
-  }
-  handleAddToCart(e) {
-    e.preventDefault();
-    this.props.addToCart(this.state.product, this.state.quantity);
-  }
-  componentDidMount() {
-    const paramID = this.props.params.id;
-    fetch(`/api/products.php?id=${paramID}`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          product: res
-        });
-      });
+    this.setState({ quantity: this.state.quantity + 1 });
   }
   render() {
     if (!this.state.product) return null;
     return (
-      <div>
-        <div
-          onClick={this.handleReturnButton}
-          className={"btn btn-primary ml-2"}
-        >
-          Back to Catalog
-        </div>
-        <div className="row">
-          <div className="col-lg-5 ml-5 mt-2">
-            <img
-              height="400px"
-              width="100%"
-              src={this.state.product.image}
-              alt="Product Image"
-            />
-          </div>
-          <div className="col-lg-4">
-            <h1>{this.state.product.name}</h1>
-            <h4 className="text-muted">
-              ${(this.state.product.price / 100).toFixed(2)}
-            </h4>
-            <h5>{this.state.product.shortDescription}</h5>
+      <React.Fragment>
+        <Container className='mt-2 mb-4'>
+          <Row>
+            <Col sm='7'>
+              <CardImg width='100%' src={this.state.product.image} alt={this.state.product.name} />
+            </Col>
+            <Col sm='5' className='m-auto'>
+              <div>
+                <div>{this.state.product.name}</div>
+                <div>{'$' + (this.state.product.price / 100).toFixed(2)}</div>
+                <div className='h4 mb-4 noselect'>
+                  <i className='fas fa-minus pointer-hover' onClick={this.decrement}></i>
+                  {this.state.quantity}
+                  <i className='fas fa-plus pointer-hover' onClick={this.increment}></i>
+                </div>
+                <Button onClick={this.handleAddToCart}>Add To Cart</Button>
+                <Button onClick={this.handleReturnButton}>Return To Catalog</Button>
+              </div>
+            </Col>
+          </Row>
+          <div>{this.state.product.shortDescription}</div>
+        </Container>
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}>Added to cart</ModalHeader>
+          <ModalBody>
             <div>
-              <button onClick={this.decrement}>&mdash;</button>
-              <input value={this.state.quantity} readOnly />
-              <button onClick={this.increment}>&#xff0b;</button>
+              <img src={this.state.product.image} alt={this.state.product.name} className='col-sm-5 mx-auto' />
+              <div className='col-sm-7'>
+                <div>{this.state.product.name}</div>
+                <div className='h6 description-font text-muted'>
+                  ${(this.state.product.price / 100).toFixed(2)} x {this.state.quantity} = $
+                  {((this.state.product.price / 100) * this.state.quantity).toFixed(2)}
+                </div>
+                <div className='h5 mb-3'>Quantity: {this.state.quantity}</div>
+              </div>
             </div>
-            <div
-              className="btn btn-warning mt-4"
-              onClick={this.handleAddToCart}
-            >
-              Add To Cart
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col mx-5">{this.state.product.longDescription}</div>
-        </div>
-      </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.handleContinueClick}>Continue Shopping</Button>
+            <Button onClick={this.handleCartClick}>Go To Cart</Button>
+          </ModalFooter>
+        </Modal>
+      </React.Fragment>
     );
   }
 }
-export default ProductDetails;
