@@ -28,8 +28,8 @@ export default class App extends React.Component {
   setView(name, params) {
     this.setState({
       view: {
-        name: name,
-        params: params
+        name,
+        params
       }
     });
   }
@@ -38,9 +38,7 @@ export default class App extends React.Component {
     if (!localStorage.cart) {
       localStorage.cart = JSON.stringify(this.state.cart);
     } else {
-      this.setState({
-        cart: JSON.parse(localStorage.cart)
-      });
+      this.setState({ cart: JSON.parse(localStorage.cart) });
     }
   }
   placeOrder(info) {
@@ -78,7 +76,7 @@ export default class App extends React.Component {
       .catch(error => error);
   }
   getProducts() {
-    fetch('/api/products.php', {
+    fetch('./api/products.php', {
       method: 'GET'
     })
       .then(response => response.json())
@@ -93,11 +91,11 @@ export default class App extends React.Component {
     product.quantity = 0;
 
     let currentCart = JSON.parse(localStorage.getItem('cart'));
-    let checkIfProductAdded = currentCart.findIndex(itemIndex => {
+    let numberofProduct = currentCart.findIndex(itemIndex => {
       return itemIndex.id === product.id;
     });
-    if (checkIfProductAdded > -1) {
-      currentCart[checkIfProductAdded].quantity += productQuantity;
+    if (numberofProduct > -1) {
+      currentCart[numberofProduct].quantity += productQuantity;
     } else if (isNaN(product.quantity)) {
       product.quantity = productQuantity;
       currentCart.push(product);
@@ -128,6 +126,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'aboutApp') {
       return (
         <div>
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
           <AboutApp setView={this.setView} />
         </div>
       );

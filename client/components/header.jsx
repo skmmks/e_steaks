@@ -48,19 +48,19 @@ export default class Header extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
-              <NavLink>
-                <i className='fas fa-tractor fa-lg pointer-hover' onClick={this.handleLandingPageView}></i>
+              <NavLink className='pointer-hover'>
+                <i className='fas fa-tractor fa-lg' onClick={this.handleLandingPageView}></i>
               </NavLink>
-              <NavLink>
-                <i className='fas fa-utensils fa-lg pointer-hover' onClick={this.handleCatalogView}></i>
+              <NavLink className='pointer-hover'>
+                <i className='fas fa-utensils fa-lg' onClick={this.handleCatalogView}></i>
               </NavLink>
-              <NavLink>
-                <i className='fas fa-shopping-cart fa-lg pointer-hover' onClick={this.handleCartView}>
+              <NavLink className='pointer-hover'>
+                <i className='fas fa-shopping-cart fa-lg' onClick={this.handleCartView}>
                   {orders}
                 </i>
               </NavLink>
-              <NavLink>
-                <i className='fas fa-question-circle fa-lg pointer-hover' onClick={this.handleAboutAppView}></i>
+              <NavLink className='pointer-hover'>
+                <i className='fas fa-question-circle fa-lg' onClick={this.handleAboutAppView}></i>
               </NavLink>
             </Nav>
           </Collapse>
@@ -69,16 +69,3 @@ export default class Header extends React.Component {
     );
   }
 }
-
-// <div className='col'>
-//   <div className='row'>
-//     <div className='col text-center text-white bg-dark'>
-//       <h5>FREE SHIPPING ON ORDERS $49 OR MORE</h5>
-//     </div>
-//   </div>
-//   <div className='row'>
-//     <div className='col text-right headerBar'>
-//       Login | Create Account <i className='fas fa-shopping-cart' onClick={this.handleSetView}></i> ({orders})
-//     </div>
-//   </div>
-// </div>
