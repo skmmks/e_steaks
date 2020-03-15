@@ -13,6 +13,7 @@ export default class CartSummaryItem extends React.Component {
     this.removeFromCart = this.removeFromCart.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.handleSetView = this.handleSetView.bind(this);
   }
   toggle() {
     this.setState(previousState => ({
@@ -40,6 +41,11 @@ export default class CartSummaryItem extends React.Component {
     e.preventDefault();
     this.toggle();
   }
+  handleSetView(e) {
+    e.preventDefault();
+    console.log(this.props.cartItem.id);
+    this.props.setView('details', { id: this.props.cartItem.id });
+  }
   render() {
     return (
       <React.Fragment>
@@ -49,7 +55,12 @@ export default class CartSummaryItem extends React.Component {
           <span className='pointer-hover' onClick={this.handleRemove}>
             <i className='far fa-times-circle'></i>
           </span>
-          <img className='col-sm-5 mx-auto' src={this.props.cartItem.image} alt={this.props.cartItem.name} />
+          <img
+            onClick={this.handleSetView}
+            className='pointer-hover col-sm-5 mx-auto'
+            src={this.props.cartItem.image}
+            alt={this.props.cartItem.name}
+          />
           <div className='h5 mb-3 noselect'>
             Quantity: <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
             {this.props.cartItem.quantity}
