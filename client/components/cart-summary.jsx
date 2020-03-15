@@ -23,7 +23,7 @@ export default class CartSummary extends React.Component {
         key={cartIndex}
         cartItem={cartItem}
         update={this.props.update}
-        removeFromCart={this.removeFromCart}
+        removeFromCart={this.props.removeFromCart}
         setView={this.setView}
       />
     ));
@@ -41,6 +41,7 @@ export default class CartSummary extends React.Component {
         <Row>
           <Col sm='7'>
             <div>Order Quantities: {totalOrders}</div>
+            <div>{itemsInCart}</div>
           </Col>
           <Col sm='5'>
             <div>Summary</div>
