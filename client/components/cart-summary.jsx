@@ -24,6 +24,7 @@ export default class CartSummary extends React.Component {
         cartItem={cartItem}
         update={this.props.update}
         removeFromCart={this.props.removeFromCart}
+        setView={this.props.setView}
       />
     ));
     const emptyCartConditional = this.props.cart.length ? (
