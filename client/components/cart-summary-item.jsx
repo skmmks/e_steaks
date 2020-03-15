@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 
 export default class CartSummaryItem extends React.Component {
   constructor(props) {
@@ -45,15 +46,15 @@ export default class CartSummaryItem extends React.Component {
         <div>
           <div>{this.props.cartItem.name}</div>
           <div>{this.props.cartItem.price}</div>
+          <span className='pointer-hover' onClick={this.handleRemove}>
+            <i className='far fa-times-circle'></i>
+          </span>
           <img className='col-sm-5 mx-auto' src={this.props.cartItem.image} alt={this.props.cartItem.name} />
           <div className='h5 mb-3 noselect'>
             Quantity: <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
             {this.props.cartItem.quantity}
             <i className='fas fa-plus pointer-hover ml-2' onClick={this.incrementItem}></i>
           </div>
-          <a href='#' className='alert-link description-font' onClick={this.handleRemove}>
-            Remove
-          </a>
         </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
