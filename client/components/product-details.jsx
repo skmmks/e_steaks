@@ -77,7 +77,8 @@ export default class ProductDetails extends React.Component {
               </div>
             </Col>
           </Row>
-          <div>{this.state.product.shortDescription}</div>
+          {/* <div>{this.state.product.shortDescription}</div> */}
+          <div>{this.state.product.longDescription}</div>
         </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Added to cart</ModalHeader>

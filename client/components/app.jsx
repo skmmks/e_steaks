@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'catalog',
+        name: 'landingPage',
         params: {}
       },
       cart: []
@@ -144,7 +144,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
-          <ProductList products={this.state.products} view={this.setView} />
+          <ProductList products={this.state.products} setView={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'details') {
@@ -162,7 +162,12 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
-          <CartSummary update={this.updateFromCart} setView={this.setView} removeFromCart={this.removeFromCart} />
+          <CartSummary
+            cart={this.state.cart}
+            update={this.updateFromCart}
+            setView={this.setView}
+            removeFromCart={this.removeFromCart}
+          />
           {/* <CartSummary removeFromCart={this.removeFromCart} cartState={this.state.cart} setView={this.setView} /> */}
         </div>
       );

@@ -18,39 +18,40 @@ export default class CartSummary extends React.Component {
     this.props.setView('checkout', {});
   }
   render() {
-    // if (this.props.cartState.length === 0) {
-    //   return (
-    //     <div>
-    //       <h1>
-    //         <div className='btn btn-primary ml-2' onClick={this.handleReturnButton}>
-    //           Return to Catalog
-    //         </div>
-    //         Your cart is empty
-    //       </h1>
-    //     </div>
-    //   );
-    // }
-    // const priceOfCartItems = this.props.cartState.reduce(
-    //   (accumulator, currentValue) => accumulator + parseInt(currentValue.price),
-    //   0
-    // );
-    // const itemsInCart = this.props.cartState.map((cartItem, index) => (
-    //   <CartSummaryItem key={index} cartItem={cartItem} />
-    // ));
-    // return (
-    //   <div className='container'>
-    //     <div className='btn btn-primary ml-2' onClick={this.handleReturnButton}>
-    //       Return to Catalog
-    //     </div>
-    //     <h3 className='mt-5'>My Cart</h3>
-    //     {itemsInCart}
-    //     <h3 className='mt-4'>
-    //       Total Price: ${(priceOfCartItems / 100).toFixed(2)}
-    //       <div className='btn btn-primary ml-2 mr-5 float-right' onClick={this.handleCheckout}>
-    //         Continue to Checkout
-    //       </div>
-    //     </h3>
-    //   </div>
-    // );
+    const itemsInCart = this.props.cart.map((cartItem, cartIndex) => (
+      <CartSummaryItem
+        key={cartIndex}
+        cartItem={cartItem}
+        update={this.props.update}
+        removeFromCart={this.removeFromCart}
+        setView={this.setView}
+      />
+    ));
+    let totalOrders = this.props.cart.reduce((total, product) => {
+      total += product.quantity;
+      return total;
+    }, 0);
+    const totalPrice = this.props.cart.reduce((accumulator, currentValue) => {
+      accumulator += currentValue.price * currentValue.quantity;
+      return accumulator;
+    }, 0);
+    const cartTotal = parseFloat(totalPrice) / 100;
+    return (
+      <Container>
+        <Row>
+          <Col sm='7'>
+            <div>Order Quantities: {totalOrders}</div>
+          </Col>
+          <Col sm='5'>
+            <div>Summary</div>
+            <div>
+              SubTotal: <span>{totalPrice}</span>
+            </div>
+            <div>Shipping</div>
+            <div>Total Price: {cartTotal} </div>
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
