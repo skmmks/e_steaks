@@ -32,7 +32,6 @@ export default class CartSummaryItem extends React.Component {
     this.props.update(this.props.cartItem.id, 'decrement');
   }
   removeFromCart(e) {
-    console.log('button was clicked');
     e.preventDefault();
     this.props.removeFromCart(this.props.cartItem.id);
     this.toggle();
@@ -49,13 +48,18 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container className='d-flex'>
+        <Container className='d-flex mt-2'>
           <Row>
             <Col sm='3'>
               <span className='pointer-hover' onClick={this.handleRemove}>
                 <i className='far fa-times-circle'></i>
               </span>
-              <img className='pointer-hover col-sm-9' src={this.props.cartItem.image} alt={this.props.cartItem.name} />
+              <img
+                onClick={this.handleSetView}
+                className='pointer-hover col-sm-9'
+                src={this.props.cartItem.image}
+                alt={this.props.cartItem.name}
+              />
             </Col>
             <Col sm='4'> {this.props.cartItem.name}</Col>
             <Col className='text-center' sm='2'>
