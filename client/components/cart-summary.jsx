@@ -18,6 +18,10 @@ export default class CartSummary extends React.Component {
     this.props.setView('checkout', {});
   }
   render() {
+    const totalPrice = this.props.cart.reduce((accumulator, currentValue) => {
+      accumulator += currentValue.price * currentValue.quantity;
+      return accumulator;
+    }, 0);
     const itemsInCart = this.props.cart.map((cartItem, cartIndex) => (
       <CartSummaryItem
         key={cartIndex}
@@ -36,7 +40,7 @@ export default class CartSummary extends React.Component {
         <p>
           Click{' '}
           <a href='#' onClick={this.handleReturnButton}>
-            Here
+            here
           </a>{' '}
           to continue shopping
         </p>
@@ -46,37 +50,35 @@ export default class CartSummary extends React.Component {
       total += product.quantity;
       return total;
     }, 0);
-    const totalPrice = this.props.cart.reduce((accumulator, currentValue) => {
-      accumulator += currentValue.price * currentValue.quantity;
-      return accumulator;
-    }, 0);
     const cartTotal = parseFloat(totalPrice) / 100;
     return (
       <Container>
-        <Row>
-          <Col sm='7'>
-            <div>
-              Shopping Cart
-              {totalOrders}
-            </div>
-            {/* <b>{emptyCartConditional}</b> */}
-          </Col>
-          <Col sm='5'>
-            <div>Summary</div>
-            <div>
-              SubTotal: <span>{totalPrice}</span>
-            </div>
-            <div>Shipping</div>
-            <div>Total Price: {cartTotal} </div>
-          </Col>
-        </Row>
         <Row>
           <Col sm='6'>Product</Col>
           <Col sm='2'>Price</Col>
           <Col sm='2'>Quantity</Col>
           <Col sm='2'>SubTotal</Col>
         </Row>
+        <hr />
         <Row>{emptyCartConditional}</Row>
+        <hr />
+        <Row>
+          <Col sm='8'>
+            <div>
+              Shopping Cart
+              {totalOrders}
+            </div>
+            {/* <b>{emptyCartConditional}</b> */}
+          </Col>
+          <Col sm='4'>
+            <div>Order Total</div>
+            <div>
+              SubTotal: <span>{totalPrice}</span>
+            </div>
+            <div>Shipping</div>
+            <div>Grand Total: {cartTotal} </div>
+          </Col>
+        </Row>
       </Container>
     );
   }

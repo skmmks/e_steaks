@@ -50,34 +50,27 @@ export default class CartSummaryItem extends React.Component {
     return (
       <React.Fragment>
         <Container className='d-flex'>
-          <Col sm='6'>
-            {this.props.cartItem.name}
+          <Col sm='3'>
             <div>
-              <img className='pointer-hover col-sm-5 mx-auto' src={this.props.cartItem.image} alt='' />
+              <span className='pointer-hover' onClick={this.handleRemove}>
+                <i className='far fa-times-circle'></i>
+              </span>
+              <img
+                className='pointer-hover col-sm-9 mx-auto'
+                src={this.props.cartItem.image}
+                alt={this.props.cartItem.name}
+              />
             </div>
           </Col>
+          <Col sm='4'> {this.props.cartItem.name}</Col>
           <Col sm='2'>{this.props.cartItem.price}</Col>
-          <Col sm='2'>{this.props.cartItem.quantity}</Col>
-          <Col sm='2'>SubTotal</Col>
-        </Container>
-        {/* <div>
-          <div>{this.props.cartItem.name}</div>
-          <div>{this.props.cartItem.price}</div>
-          <span className='pointer-hover' onClick={this.handleRemove}>
-            <i className='far fa-times-circle'></i>
-          </span>
-          <img
-            onClick={this.handleSetView}
-            className='pointer-hover col-sm-5 mx-auto'
-            src={this.props.cartItem.image}
-            alt={this.props.cartItem.name}
-          />
-          <div className='h5 mb-3 noselect'>
-            Quantity: <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
+          <Col sm='2'>
+            <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
             {this.props.cartItem.quantity}
             <i className='fas fa-plus pointer-hover ml-2' onClick={this.incrementItem}></i>
-          </div>
-        </div> */}
+          </Col>
+          <Col sm='2'>{this.props.cartItem.price * this.props.cartItem.quantity}</Col>
+        </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
             <h1>Remove from Cart?</h1>
