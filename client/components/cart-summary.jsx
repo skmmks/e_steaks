@@ -71,13 +71,12 @@ export default class CartSummary extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col sm='6'>
-            Product <b>{emptyCartConditional}</b>
-          </Col>
+          <Col sm='6'>Product</Col>
           <Col sm='2'>Price</Col>
           <Col sm='2'>Quantity</Col>
           <Col sm='2'>SubTotal</Col>
         </Row>
+        <Row>{emptyCartConditional}</Row>
       </Container>
     );
   }

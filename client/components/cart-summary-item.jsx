@@ -49,7 +49,18 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
+        <Container className='d-flex'>
+          <Col sm='6'>
+            {this.props.cartItem.name}
+            <div>
+              <img className='pointer-hover col-sm-5 mx-auto' src={this.props.cartItem.image} alt='' />
+            </div>
+          </Col>
+          <Col sm='2'>{this.props.cartItem.price}</Col>
+          <Col sm='2'>{this.props.cartItem.quantity}</Col>
+          <Col sm='2'>SubTotal</Col>
+        </Container>
+        {/* <div>
           <div>{this.props.cartItem.name}</div>
           <div>{this.props.cartItem.price}</div>
           <span className='pointer-hover' onClick={this.handleRemove}>
@@ -66,7 +77,7 @@ export default class CartSummaryItem extends React.Component {
             {this.props.cartItem.quantity}
             <i className='fas fa-plus pointer-hover ml-2' onClick={this.incrementItem}></i>
           </div>
-        </div>
+        </div> */}
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
             <h1>Remove from Cart?</h1>
@@ -82,18 +93,4 @@ export default class CartSummaryItem extends React.Component {
       </React.Fragment>
     );
   }
-  // render() {
-  //   const itemPrice = (this.props.cartItem.price / 100).toFixed(2);
-  //   return (
-  //     <div className='col'>
-  //       <div className='card-group h-100'>
-  //         <div className='ml-5 col-4'><img height='200px' width='auto' src={this.props.cartItem.image} alt="item of image"/></div>
-  //         <h1 className='col-5'>{this.props.cartItem.name}
-  //           <h3 className='col my-3' >${itemPrice}</h3>
-  //           <h6 className='col'>{this.props.cartItem.shortDescription}</h6>
-  //         </h1>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
