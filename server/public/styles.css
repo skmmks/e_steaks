@@ -7,14 +7,14 @@
   width: 100vw;
   position: fixed;
 }
-.navigationBar {
+/* .navigationBar {
   background-color: #fff;
   color: darkolivegreen;
 }
 .headerBar {
   background-color: darkolivegreen;
   color: #fff;
-}
+} */
 .pointer-hover {
   cursor: pointer;
 }

@@ -32,7 +32,6 @@ export default class CartSummaryItem extends React.Component {
     this.props.update(this.props.cartItem.id, 'decrement');
   }
   removeFromCart(e) {
-    console.log('button was clicked');
     e.preventDefault();
     this.props.removeFromCart(this.props.cartItem.id);
     this.toggle();
@@ -49,24 +48,33 @@ export default class CartSummaryItem extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <div>{this.props.cartItem.name}</div>
-          <div>{this.props.cartItem.price}</div>
-          <span className='pointer-hover' onClick={this.handleRemove}>
-            <i className='far fa-times-circle'></i>
-          </span>
-          <img
-            onClick={this.handleSetView}
-            className='pointer-hover col-sm-5 mx-auto'
-            src={this.props.cartItem.image}
-            alt={this.props.cartItem.name}
-          />
-          <div className='h5 mb-3 noselect'>
-            Quantity: <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
-            {this.props.cartItem.quantity}
-            <i className='fas fa-plus pointer-hover ml-2' onClick={this.incrementItem}></i>
-          </div>
-        </div>
+        <Container className='d-flex mt-2'>
+          <Row>
+            <Col sm='3'>
+              <span className='pointer-hover' onClick={this.handleRemove}>
+                <i className='far fa-times-circle'></i>
+              </span>
+              <img
+                onClick={this.handleSetView}
+                className='pointer-hover col-sm-9'
+                src={this.props.cartItem.image}
+                alt={this.props.cartItem.name}
+              />
+            </Col>
+            <Col sm='4'> {this.props.cartItem.name}</Col>
+            <Col className='text-center' sm='2'>
+              ${parseFloat(this.props.cartItem.price) / 100}
+            </Col>
+            <Col className='text-center' sm='2'>
+              <i className='fas fa-minus pointer-hover mr-2 fa-xs' onClick={this.decrementItem}></i>
+              {this.props.cartItem.quantity}
+              <i className='fas fa-plus pointer-hover ml-2 fa-xs' onClick={this.incrementItem}></i>
+            </Col>
+            <Col className='text-center' sm='1'>
+              ${parseFloat(this.props.cartItem.price * this.props.cartItem.quantity) / 100}
+            </Col>
+          </Row>
+        </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
             <h1>Remove from Cart?</h1>
@@ -82,18 +90,4 @@ export default class CartSummaryItem extends React.Component {
       </React.Fragment>
     );
   }
-  // render() {
-  //   const itemPrice = (this.props.cartItem.price / 100).toFixed(2);
-  //   return (
-  //     <div className='col'>
-  //       <div className='card-group h-100'>
-  //         <div className='ml-5 col-4'><img height='200px' width='auto' src={this.props.cartItem.image} alt="item of image"/></div>
-  //         <h1 className='col-5'>{this.props.cartItem.name}
-  //           <h3 className='col my-3' >${itemPrice}</h3>
-  //           <h6 className='col'>{this.props.cartItem.shortDescription}</h6>
-  //         </h1>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
