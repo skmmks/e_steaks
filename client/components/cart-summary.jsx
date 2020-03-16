@@ -31,26 +31,8 @@ export default class CartSummary extends React.Component {
         setView={this.props.setView}
       />
     ));
-    // const emptyCartConditional = this.props.cart.length ? (
-    //   itemsInCart
-    // ) : (
-    //   <div>
-    //     <h1>Shopping Cart Is Empty</h1>
-    //     <p>You have no items in your shopping cart</p>
-    //     <p>
-    //       Click{' '}
-    //       <a href='#' onClick={this.handleReturnButton}>
-    //         here
-    //       </a>{' '}
-    //       to continue shopping
-    //     </p>
-    //   </div>
-    // );
-    // let totalOrders = this.props.cart.reduce((total, product) => {
-    //   total += product.quantity;
-    //   return total;
-    // }, 0);
-    const cartTotal = parseFloat(totalPrice) / 100;
+    let cartTotal = totalPrice > 5000 ? parseFloat(totalPrice) / 100 : parseFloat(totalPrice + 799) / 100;
+    let shippingConditionalDOM = totalPrice > 5000 ? <span>Free</span> : <span>$7.99</span>;
     if (!this.props.cart.length) {
       return (
         <div>
@@ -102,7 +84,7 @@ export default class CartSummary extends React.Component {
               <div>
                 SubTotal: <span>${parseFloat(totalPrice) / 100}</span>
               </div>
-              <div>Shipping</div>
+              <div>Shipping: {shippingConditionalDOM}</div>
               <div>Grand Total: ${cartTotal} </div>
             </Col>
           </Row>
