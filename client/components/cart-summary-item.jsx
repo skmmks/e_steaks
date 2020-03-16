@@ -50,26 +50,26 @@ export default class CartSummaryItem extends React.Component {
     return (
       <React.Fragment>
         <Container className='d-flex'>
-          <Col sm='3'>
-            <div>
+          <Row>
+            <Col sm='3'>
               <span className='pointer-hover' onClick={this.handleRemove}>
                 <i className='far fa-times-circle'></i>
               </span>
-              <img
-                className='pointer-hover col-sm-9 mx-auto'
-                src={this.props.cartItem.image}
-                alt={this.props.cartItem.name}
-              />
-            </div>
-          </Col>
-          <Col sm='4'> {this.props.cartItem.name}</Col>
-          <Col sm='2'>{this.props.cartItem.price}</Col>
-          <Col sm='2'>
-            <i className='fas fa-minus pointer-hover mr-2' onClick={this.decrementItem}></i>
-            {this.props.cartItem.quantity}
-            <i className='fas fa-plus pointer-hover ml-2' onClick={this.incrementItem}></i>
-          </Col>
-          <Col sm='2'>{this.props.cartItem.price * this.props.cartItem.quantity}</Col>
+              <img className='pointer-hover col-sm-9' src={this.props.cartItem.image} alt={this.props.cartItem.name} />
+            </Col>
+            <Col sm='4'> {this.props.cartItem.name}</Col>
+            <Col className='text-center' sm='2'>
+              ${parseFloat(this.props.cartItem.price) / 100}
+            </Col>
+            <Col className='text-center' sm='2'>
+              <i className='fas fa-minus pointer-hover mr-2 fa-xs' onClick={this.decrementItem}></i>
+              {this.props.cartItem.quantity}
+              <i className='fas fa-plus pointer-hover ml-2 fa-xs' onClick={this.incrementItem}></i>
+            </Col>
+            <Col className='text-center' sm='1'>
+              ${parseFloat(this.props.cartItem.price * this.props.cartItem.quantity) / 100}
+            </Col>
+          </Row>
         </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>

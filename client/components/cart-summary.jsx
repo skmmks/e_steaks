@@ -54,10 +54,16 @@ export default class CartSummary extends React.Component {
     return (
       <Container>
         <Row>
-          <Col sm='6'>Product</Col>
-          <Col sm='2'>Price</Col>
-          <Col sm='2'>Quantity</Col>
-          <Col sm='2'>SubTotal</Col>
+          <Col sm='7'>Product</Col>
+          <Col className='text-center' sm='2'>
+            Price
+          </Col>
+          <Col className='text-center' sm='2'>
+            Quantity
+          </Col>
+          <Col className='text-center' sm='1'>
+            SubTotal
+          </Col>
         </Row>
         <hr />
         <Row>{emptyCartConditional}</Row>
@@ -68,7 +74,6 @@ export default class CartSummary extends React.Component {
               Shopping Cart
               {totalOrders}
             </div>
-            {/* <b>{emptyCartConditional}</b> */}
           </Col>
           <Col sm='4'>
             <div>Order Total</div>
@@ -76,7 +81,7 @@ export default class CartSummary extends React.Component {
               SubTotal: <span>{totalPrice}</span>
             </div>
             <div>Shipping</div>
-            <div>Grand Total: {cartTotal} </div>
+            <div>Grand Total: ${cartTotal} </div>
           </Col>
         </Row>
       </Container>
