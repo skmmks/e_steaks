@@ -1,6 +1,7 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import { Col, Container, Row, Button } from 'reactstrap';
+import ReactTooltip from 'react-tooltip';
 
 export default class CartSummary extends React.Component {
   constructor(props) {
@@ -85,6 +86,26 @@ export default class CartSummary extends React.Component {
               </div>
               <div>Shipping: {shippingConditionalDOM}</div>
               <div>Grand Total: ${cartTotal} </div>
+              <Button color='success' size='lg' block onClick={this.handleCheckout}>
+                Checkout
+              </Button>
+              <Button
+                className='text-white'
+                data-tip
+                data-for='tooltip-cart2'
+                color='warning pointer-hover'
+                size='lg'
+                disabled
+                block
+              >
+                <i className='fab fa-paypal' data-tip data-for='tooltip-cart2'>
+                  {' '}
+                  Continue with Paypal
+                </i>
+              </Button>
+              <ReactTooltip id='tooltip-cart2' place='right' type='dark' effect='solid'>
+                <span className='font-weight-bold'>Currently Unavailable</span>
+              </ReactTooltip>
             </Col>
           </Row>
         </Container>
