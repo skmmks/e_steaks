@@ -1,7 +1,6 @@
 import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 import { Col, Container, Row, Button } from 'reactstrap';
-import ReactTooltip from 'react-tooltip';
 
 export default class CartSummary extends React.Component {
   constructor(props) {

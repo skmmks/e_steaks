@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'cart',
+        name: 'landingPage',
         params: {}
       },
       cart: []
@@ -168,7 +168,6 @@ export default class App extends React.Component {
             setView={this.setView}
             removeFromCart={this.removeFromCart}
           />
-          {/* <CartSummary removeFromCart={this.removeFromCart} cartState={this.state.cart} setView={this.setView} /> */}
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
