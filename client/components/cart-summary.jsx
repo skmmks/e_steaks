@@ -7,11 +7,13 @@ export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      couponCode: ''
     };
     this.handleReturnButton = this.handleReturnButton.bind(this);
     this.handleCheckout = this.handleCheckout.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.onApply = this.onApply.bind(this);
   }
   handleReturnButton(e) {
     e.preventDefault();
@@ -22,9 +24,17 @@ export default class CartSummary extends React.Component {
     this.props.setView('checkout', {});
   }
   toggle() {
+    this.setState({
+      couponCode: ''
+    });
     this.setState(previousState => ({
       modal: !previousState.modal
     }));
+  }
+  onApply() {
+    this.setState({
+      couponCode: 'Sorry, Not a Valid Coupon Code'
+    });
   }
   render() {
     const totalPrice = this.props.cart.reduce((accumulator, currentValue) => {
@@ -130,9 +140,10 @@ export default class CartSummary extends React.Component {
             </ModalHeader>
             <ModalBody>
               <input type='text' />
+              <div className='mt-2 text-danger'>{this.state.couponCode}</div>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={this.toggle}>Apply</Button>
+              <Button onClick={this.onApply}>Apply</Button>
               <Button onClick={this.toggle}>Cancel</Button>
             </ModalFooter>
           </Modal>
