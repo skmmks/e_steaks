@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap';
 
+import CheckoutSummary from './checkout-summary';
+
 export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ export default class CheckoutForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.validate = this.validateText.bind(this);
+    // this.validate = this.validateText.bind(this);
   }
   handleCartClick(e) {
     e.preventDefault();
@@ -41,6 +43,9 @@ export default class CheckoutForm extends React.Component {
   //   regexTest.test(e.target.value) ? ([e.target.name] = 'success') : ([e.target.name] = 'unsuccess');
   // }
   render() {
+    const currentCart = this.props.cartState.map((product, index) => (
+      <CheckoutSummary key={index} cartItem={product} setView={this.props.setView} />
+    ));
     const priceOfCartItems = this.props.cartState.reduce(
       (accumulator, currentValue) => accumulator + parseInt(currentValue.price),
       0
