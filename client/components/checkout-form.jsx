@@ -16,6 +16,7 @@ export default class CheckoutForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.validate = this.validateText.bind(this);
   }
   handleCartClick(e) {
     e.preventDefault();
@@ -32,6 +33,13 @@ export default class CheckoutForm extends React.Component {
       [e.target.name]: e.target.value
     });
   }
+  // validateText(e) {
+  //   console.log('name: ', e.target.name);
+  //   console.log('value: ', e.target.value);
+  //   const regexTest = /[A-Za-z0-9]/;
+  //   // const { validate } = this.state;
+  //   regexTest.test(e.target.value) ? ([e.target.name] = 'success') : ([e.target.name] = 'unsuccess');
+  // }
   render() {
     const priceOfCartItems = this.props.cartState.reduce(
       (accumulator, currentValue) => accumulator + parseInt(currentValue.price),
