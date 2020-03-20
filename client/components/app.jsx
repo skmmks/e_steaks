@@ -176,7 +176,7 @@ export default class App extends React.Component {
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <CheckoutForm
             setView={this.setView}
-            cartState={this.state.cart}
+            cart={this.state.cart}
             placeOrder={this.placeOrder}
             setView={this.setView}
           />

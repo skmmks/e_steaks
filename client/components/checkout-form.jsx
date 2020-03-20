@@ -43,10 +43,10 @@ export default class CheckoutForm extends React.Component {
   //   regexTest.test(e.target.value) ? ([e.target.name] = 'success') : ([e.target.name] = 'unsuccess');
   // }
   render() {
-    const currentCart = this.props.cartState.map((product, index) => (
-      <CheckoutSummary key={index} cartItem={product} setView={this.props.setView} />
+    const currentCart = this.props.cart.map((product, index) => (
+      <CheckoutSummary key={index} product={product} setView={this.props.setView} />
     ));
-    const priceOfCartItems = this.props.cartState.reduce(
+    const priceOfCartItems = this.props.cart.reduce(
       (accumulator, currentValue) => accumulator + parseInt(currentValue.price),
       0
     );
@@ -114,6 +114,7 @@ export default class CheckoutForm extends React.Component {
                 </FormGroup>
               </Form>
             </Col>
+            <Col sm='3'>{currentCart}</Col>
           </Row>
           <Row>
             <Col>
