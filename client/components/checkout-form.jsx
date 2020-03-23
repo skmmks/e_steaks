@@ -26,7 +26,6 @@ export default class CheckoutForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.placeOrder(this.state);
     this.props.setView('landingPage', {});
   }
   handleInput(e) {
@@ -123,45 +122,6 @@ export default class CheckoutForm extends React.Component {
           </Row>
         </Container>
       </React.Fragment>
-      // <div className='container'>
-      //   <div className='col'>
-      //     <h1 className='mt-3'>Checkout</h1>
-      //     <h5 className='text-muted mb-5'>Order Total ${(priceOfCartItems / 100).toFixed(2)}</h5>
-      //     <h5>Name</h5>
-      //     <input
-      //       name='name'
-      //       placeholder='Your Name Here'
-      //       className='form-control mb-3'
-      //       type='text'
-      //       onChange={this.handleInput}
-      //       value={this.state.name}
-      //     />
-      //     <h5>Credit Card</h5>
-      //     <input
-      //       name='creditCard'
-      //       placeholder='XXXX-XXXX-XXXX'
-      //       className='form-control mb-3'
-      //       type='number'
-      //       onChange={this.handleInput}
-      //       value={this.state.creditCard}
-      //     />
-      //     <h5>Shipping Address</h5>
-      //     <textarea
-      //       name='address'
-      //       placeholder='Your Address Here'
-      //       className='form-control mb-3'
-      //       type='text'
-      //       onChange={this.handleInput}
-      //       value={this.state.address}
-      //     ></textarea>
-      //     <div>
-      //       <Button className='ml-2 col-5 btn btn-primary' onClick={this.handleCartClick}>
-      //         Return to Catalog
-      //       </Button>
-      //       <input className='ml-2 col-5 btn btn-warning float-right' type='submit' />
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }

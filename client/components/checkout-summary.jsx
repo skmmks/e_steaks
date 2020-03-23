@@ -5,9 +5,6 @@ export default class CheckoutSummary extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-    document.body.style.background = '#fff';
-  }
   render() {
     const total = ((this.props.product.price * this.props.product.quantity) / 100).toFixed(2);
     return (
@@ -23,15 +20,7 @@ export default class CheckoutSummary extends React.Component {
             <Col sm='7'>{this.props.product.name}</Col>
             <Col sm='1'>${total}</Col>
           </Row>
-          <Row></Row>
         </Container>
-        {/* <div>
-          <div>
-            <img className='col-sm-5 mx-auto' src={this.props.product.image} alt={this.props.product.name} />
-            {this.props.product.name}${(this.props.product.price / 100).toFixed(2)}
-            <h1>{this.props.product.quantity}</h1>
-          </div>
-        </div> */}
       </React.Fragment>
     );
   }
