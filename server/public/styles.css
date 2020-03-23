@@ -18,3 +18,8 @@
 .pointer-hover {
   cursor: pointer;
 }
+.quantityBadge {
+  position: absolute;
+  top: -0.5em;
+  right: 5.5em;
+}

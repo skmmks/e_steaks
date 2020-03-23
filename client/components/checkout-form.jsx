@@ -114,7 +114,7 @@ export default class CheckoutForm extends React.Component {
                 </FormGroup>
               </Form>
             </Col>
-            <Col sm='3'>{currentCart}</Col>
+            <Col sm='7'>{currentCart}</Col>
           </Row>
           <Row>
             <Col>
