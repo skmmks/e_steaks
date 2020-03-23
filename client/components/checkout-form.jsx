@@ -52,13 +52,9 @@ export default class CheckoutForm extends React.Component {
     );
     return (
       <React.Fragment>
-        <div></div>
         <Container>
           <Row>
             <Col className='mt-5'>CHECKOUT</Col>
-          </Row>
-          <Row className='mt-3'>
-            <Col>Order Total: ${(priceOfCartItems / 100).toFixed(2)}</Col>
           </Row>
           <Row className='mt-3'>
             <Col sm='5'>

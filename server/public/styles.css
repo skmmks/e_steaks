@@ -21,7 +21,7 @@
 .quantityBadge {
   position: absolute;
   top: -0.5em;
-  right: 5.5em;
+  right: 4em;
 }
 .checkout {
   background: linear-gradient(to right, rgb(252, 248, 242) 50%, rgb(54, 60, 27) 0%);

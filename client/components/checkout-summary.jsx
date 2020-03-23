@@ -13,15 +13,15 @@ export default class CheckoutSummary extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <Row>
-            <Col sm='5'>
+          <Row className='ml-5 mb-3 pl-5 text-white'>
+            <Col sm='4'>
               <img className='col-sm-10 mx-auto' src={this.props.product.image} alt=''></img>
               <Badge className='quantityBadge' color='light' pill>
                 {this.props.product.quantity}
               </Badge>
             </Col>
-            <Col sm='5'>{this.props.product.name}</Col>
-            <Col sm='2'>${total}</Col>
+            <Col sm='7'>{this.props.product.name}</Col>
+            <Col sm='1'>${total}</Col>
           </Row>
           <Row></Row>
         </Container>
