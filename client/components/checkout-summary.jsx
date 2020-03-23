@@ -5,6 +5,9 @@ export default class CheckoutSummary extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    document.body.style.background = '#fff';
+  }
   render() {
     const total = ((this.props.product.price * this.props.product.quantity) / 100).toFixed(2);
     return (

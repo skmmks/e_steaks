@@ -52,6 +52,7 @@ export default class CheckoutForm extends React.Component {
     );
     return (
       <React.Fragment>
+        <div></div>
         <Container>
           <Row>
             <Col className='mt-5'>CHECKOUT</Col>

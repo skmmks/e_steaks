@@ -172,7 +172,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'checkout') {
       return (
-        <div>
+        <div className='checkout'>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <CheckoutForm
             setView={this.setView}
