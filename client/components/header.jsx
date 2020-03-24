@@ -41,9 +41,12 @@ export default class Header extends React.Component {
     }, 0);
     return (
       <div>
+        <div className='text-center shippingHeader'>FREE SHIPPING ON ORDERS $50 OR MORE. </div>
         <Navbar className='navBarHeader' expand='md'>
           <NavbarBrand className='header-font pointer-hover noselect' onClick={this.handleLandingPageView}>
-            Heritage Farm *Replace with Icon*
+            <span>
+              <img className='navBarImg' src='images/logo.png' alt='Heritage Farm Logo' />
+            </span>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

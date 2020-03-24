@@ -15,6 +15,16 @@
   background-color: darkolivegreen;
   color: #fff;
 } */
+.shippingHeader {
+  background-color: rgb(1, 106, 117);
+  color: rgb(173, 205, 207);
+}
+.navBarImg {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  margin-top: -45px;
+}
 .navBarHeader {
   background-color: rgb(38, 40, 35);
   color: rgb(213, 202, 163);

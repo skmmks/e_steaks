@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'checkout',
+        name: 'landingPage',
         params: {}
       },
       cart: []
@@ -130,6 +130,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
           <LandingPage setView={this.setView} />
         </React.Fragment>
       );

@@ -15,15 +15,21 @@ export default class Navigation extends React.Component {
       <div className='navigationBar'>
         {/* mollyjogger */}
         <Navbar>
-          <NavbarBrand name='landingPage' onClick={this.handleView}>
+          <NavbarBrand className='pointer-hover' name='landingPage' onClick={this.handleView}>
             Heritage Farms
           </NavbarBrand>
-          <NavbarBrand name='catalog' value='catalog' onClick={this.handleView}>
-            Shop
-          </NavbarBrand>
-          <NavbarBrand name='aboutApp' onClick={this.handleView}>
-            About
-          </NavbarBrand>
+          <Nav>
+            <NavItem>
+              <NavLink className='pointer-hover m-0' name='catalog' onClick={this.handleView}>
+                Shop
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className='pointer-hover m-0' name='aboutApp' onClick={this.handleView}>
+                About
+              </NavLink>
+            </NavItem>
+          </Nav>
         </Navbar>
       </div>
     );
