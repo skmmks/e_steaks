@@ -41,9 +41,9 @@ export default class Header extends React.Component {
     }, 0);
     return (
       <div>
-        <Navbar color='dark' expand='md'>
+        <Navbar className='navBarHeader' expand='md'>
           <NavbarBrand className='header-font pointer-hover noselect' onClick={this.handleLandingPageView}>
-            Heritage Farm
+            Heritage Farm *Replace with Icon*
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -55,7 +55,10 @@ export default class Header extends React.Component {
                 <i className='fas fa-utensils fa-lg' onClick={this.handleCatalogView}></i>
               </NavLink>
               <NavLink className='pointer-hover'>
-                <i className='fas fa-shopping-cart fa-lg' onClick={this.handleCartView}></i>
+                <i className='fas fa-shopping-cart fa-lg' onClick={this.handleCartView}>
+                  {' '}
+                  ({orders})
+                </i>
               </NavLink>
               <NavLink className='pointer-hover'>
                 <i className='fas fa-question-circle fa-lg' onClick={this.handleAboutAppView}></i>
