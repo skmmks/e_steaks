@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
 .landingPage {
   background-image: url('./images/steak_dinner.jpg'), url('./images/grass-field.jpg');
   background-size: 50% 100%;
@@ -8,8 +10,9 @@
   position: fixed;
 }
 .navigationBar {
-  background-color: #fff;
-  color: darkolivegreen;
+  padding: 0.75em;
+  background-color: rgb(252, 249, 245);
+  color: rgb(135, 137, 114);
 }
 /* .headerBar {
   background-color: darkolivegreen;
@@ -18,6 +21,7 @@
 .shippingHeader {
   background-color: rgb(1, 106, 117);
   color: rgb(173, 205, 207);
+  font-family: 'Lato', sans-serif;
 }
 .navBarImg {
   position: absolute;
@@ -41,10 +45,4 @@
   background: linear-gradient(to right, rgb(252, 248, 242) 50%, rgb(54, 60, 27) 0%);
   height: 100vh;
   width: 100vw;
-}
-.leftBG {
-  background-color: rgb(252, 248, 242);
-}
-.rightBG {
-  background-color: rgb(54, 60, 27);
 }
