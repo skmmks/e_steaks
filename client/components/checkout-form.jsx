@@ -1,5 +1,17 @@
 import React from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Input, Modal, ModalHeader } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 
 import CheckoutSummary from './checkout-summary';
 
@@ -147,6 +159,30 @@ export default class CheckoutForm extends React.Component {
         </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}></ModalHeader>
+          <ModalBody>
+            <Container>
+              <Row>
+                <Col>
+                  <div>Name:{this.state.name}</div>
+                  <div>Address:{this.state.address}</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                </Col>
+                <Col>
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                </Col>
+              </Row>
+            </Container>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggle}>Go Back</Button>
+            <Button onClick={this.handlePlaceOrder}>Submit</Button>
+          </ModalFooter>
         </Modal>
       </React.Fragment>
     );

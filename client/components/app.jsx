@@ -8,6 +8,7 @@ import CheckoutForm from './checkout-form';
 import LandingPage from './landing-page';
 import AboutApp from './about-app';
 import Navigation from './navigation';
+import ConfirmationPage from './confirmation-page';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -204,6 +205,7 @@ export default class App extends React.Component {
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <Navigation setView={this.setView} />
+          <ConfirmationPage setView={this.setView} />
         </div>
       );
     }
