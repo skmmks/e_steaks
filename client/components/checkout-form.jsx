@@ -1,5 +1,17 @@
 import React from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Input } from 'reactstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 
 import CheckoutSummary from './checkout-summary';
 
@@ -13,26 +25,50 @@ export default class CheckoutForm extends React.Component {
       address: '',
       city: '',
       zip: '',
-      phone: ''
+      phone: '',
+      orderID: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handlePlaceOrder = this.handlePlaceOrder.bind(this);
+    this.toggle = this.toggle.bind(this);
     // this.validate = this.validateText.bind(this);
+  }
+  componentDidMount() {
+    const orderID = Math.random()
+      .toString(36)
+      .substr(2, 9)
+      .toUpperCase();
+    this.setState({
+      orderID: orderID
+    });
+  }
+  toggle() {
+    this.setState(previousState => ({
+      modal: !previousState.modal
+    }));
   }
   handleCartClick(e) {
     e.preventDefault();
     this.props.setView('cart', {});
-  }
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.setView('landingPage', {});
   }
   handleInput(e) {
     e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.orderDetails(this.state.orderID);
+    this.toggle();
+  }
+  handlePlaceOrder(e) {
+    e.preventDefault();
+    this.toggle();
+    this.props.placeOrder(this.state.orderId);
+    this.props.setView('confirmationPage', {});
   }
   // validateText(e) {
   //   console.log('name: ', e.target.name);
@@ -57,7 +93,7 @@ export default class CheckoutForm extends React.Component {
           </Row>
           <Row className='mt-3'>
             <Col sm='5'>
-              <Form onSubmit={this.handleSubmit}>
+              <Form onSubmit={this.handlePlaceOrder}>
                 <FormGroup>
                   <Input
                     name='name'
@@ -121,6 +157,33 @@ export default class CheckoutForm extends React.Component {
             </Col>
           </Row>
         </Container>
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}></ModalHeader>
+          <ModalBody>
+            <Container>
+              <Row>
+                <Col>
+                  <div>Name:{this.state.name}</div>
+                  <div>Address:{this.state.address}</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                </Col>
+                <Col>
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                </Col>
+              </Row>
+            </Container>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggle}>Go Back</Button>
+            <Button onClick={this.handlePlaceOrder}>Submit</Button>
+          </ModalFooter>
+        </Modal>
       </React.Fragment>
     );
   }
