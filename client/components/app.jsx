@@ -15,16 +15,21 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'landingPage',
+        name: 'checkout',
         params: {}
       },
-      cart: []
+      cart: [],
+      userOrder: {
+        userInfo: {},
+        cart: []
+      }
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.updateFromCart = this.updateFromCart.bind(this);
+    this.showUserDetails = this.showUserDetails.bind(this);
   }
   setView(name, params) {
     this.setState({
@@ -43,15 +48,16 @@ export default class App extends React.Component {
     }
   }
   placeOrder(info) {
+    localStorage.clear();
     let currentCart = [...this.state.cart];
-    let orderDetails = {
-      info,
-      cart: JSON.stringify(currentCart)
-    };
     currentCart.map(product => {
       delete product.description;
       delete product.image;
     });
+    let orderDetails = {
+      info,
+      cart: JSON.stringify(currentCart)
+    };
     fetch('./api/orders.php', {
       method: 'POST',
       body: JSON.stringify(orderDetails),
@@ -106,6 +112,14 @@ export default class App extends React.Component {
     }
     this.setState({ cart: currentCart });
     localStorage.cart = JSON.stringify(currentCart);
+  }
+  showUserDetails(userInfo) {
+    this.setState({
+      userOrder: {
+        userInfo,
+        cart: JSON.parse(localStorage.cart)
+      }
+    });
   }
   removeFromCart(productId) {
     let currentCart = JSON.parse(localStorage.getItem('cart'));
@@ -181,7 +195,15 @@ export default class App extends React.Component {
             cart={this.state.cart}
             placeOrder={this.placeOrder}
             setView={this.setView}
+            orderDetails={this.showUserDetails}
           />
+        </div>
+      );
+    } else if (this.state.view.name === 'confirmationPage') {
+      return (
+        <div>
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
         </div>
       );
     }
