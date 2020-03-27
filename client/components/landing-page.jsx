@@ -28,7 +28,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <div className='text-right landingPage'>
-        <LandingCarousel />
+        {/* <LandingCarousel /> */}
         {/* <div>
           <h1> <img src="images/logo.png" alt="Heritage Farm Logo"/> Welcome to Heritage Farm Steaks</h1>
           
