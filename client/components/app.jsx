@@ -143,11 +143,11 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'landingPage') {
       return (
-        <React.Fragment>
+        <div className='fade-in'>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <Navigation setView={this.setView} />
           <LandingPage setView={this.setView} />
-        </React.Fragment>
+        </div>
       );
     } else if (this.state.view.name === 'aboutApp') {
       return (
