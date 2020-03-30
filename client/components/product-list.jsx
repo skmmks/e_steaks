@@ -8,6 +8,8 @@ export default class ProductList extends React.Component {
     ));
     return (
       <div className='container'>
+        <h1 className='catalogHeader'>Inventory</h1>
+        <hr />
         <div className='row'>{merch}</div>
       </div>
     );

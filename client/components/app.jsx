@@ -160,6 +160,7 @@ export default class App extends React.Component {
       return (
         <div className='catalogPage'>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
           <ProductList products={this.state.products} setView={this.setView} />
         </div>
       );

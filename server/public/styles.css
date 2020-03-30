@@ -41,6 +41,14 @@
   text-align: center;
   margin-top: 4px;
 }
+.catalogHeader {
+  font: 'Lato', Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #626545;
+  font-size: 2.25em;
+}
 /* .headerBar {
   background-color: darkolivegreen;
   color: #fff;
