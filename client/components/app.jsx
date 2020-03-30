@@ -158,7 +158,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view.name === 'catalog') {
       return (
-        <div>
+        <div className='catalogPage'>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <ProductList products={this.state.products} setView={this.setView} />
         </div>
