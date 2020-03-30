@@ -13,8 +13,8 @@ export default class ProductListItem extends React.Component {
     const price = this.props.merch.price / 100;
     return (
       <div className='col-sm-4'>
-        <div className='card-group h-100'>
-          <div className='card mt-3' onClick={this.handleSetView}>
+        <div className='card-group h-100 pointer-hover'>
+          <div className='card mt-3 catalogPage' onClick={this.handleSetView}>
             <img
               height='300px'
               width='100%'
@@ -22,9 +22,9 @@ export default class ProductListItem extends React.Component {
               src={this.props.merch.image}
               alt={this.props.merch.name}
             />
-            <h2 className='card-header'>{this.props.merch.name}</h2>
-            <h4>${price.toFixed(2)}</h4>
-            <p>{this.props.merch.shortDescription}</p>
+            <div className='productTitle'>{this.props.merch.name}</div>
+            <div className='productPrice'>${price.toFixed(2)}</div>
+            <div className='productDescription'>{this.props.merch.shortDescription}</div>
           </div>
         </div>
       </div>
