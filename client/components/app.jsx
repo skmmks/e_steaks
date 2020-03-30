@@ -168,6 +168,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
           <ProductDetails
             item={this.state.products[this.state.view.params.id - 1]}
             addToCart={this.addToCart}
@@ -179,6 +180,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
           <CartSummary
             cart={this.state.cart}
             update={this.updateFromCart}

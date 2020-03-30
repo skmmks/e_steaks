@@ -58,27 +58,31 @@ export default class ProductDetails extends React.Component {
     if (!this.state.product) return null;
     return (
       <React.Fragment>
-        <Container className='mt-2 mb-4'>
+        <Container className='mt-5 mb-4'>
           <Row>
-            <Col sm='7'>
+            <Col sm='5'>
               <CardImg width='100%' src={this.state.product.image} alt={this.state.product.name} />
             </Col>
             <Col sm='5' className='m-auto'>
               <div>
-                <div>{this.state.product.name}</div>
-                <div>{'$' + (this.state.product.price / 100).toFixed(2)}</div>
+                <div className='productDetailsTitle'>{this.state.product.name}</div>
+                <div className='productDetailsPrice'>{'$' + (this.state.product.price / 100).toFixed(2)}</div>
                 <div className='h4 mb-4 noselect'>
-                  <i className='fas fa-minus pointer-hover' onClick={this.decrement}></i>
+                  <i className='fas fa-minus pointer-hover mr-2 fa-xs' onClick={this.decrement}></i>
                   {this.state.quantity}
-                  <i className='fas fa-plus pointer-hover' onClick={this.increment}></i>
+                  <i className='fas fa-plus pointer-hover ml-2 fa-xs' onClick={this.increment}></i>
                 </div>
-                <Button onClick={this.handleAddToCart}>Add To Cart</Button>
-                <Button onClick={this.handleReturnButton}>Return To Catalog</Button>
+                <Button className='addToCartButton' onClick={this.handleAddToCart}>
+                  Add To Cart
+                </Button>
+                <br />
+                {/* <Button className='mt-2' onClick={this.handleReturnButton}>
+                  Return To Catalog
+                </Button> */}
               </div>
+              <div className='productDetailsDescription'>{this.state.product.longDescription}</div>
             </Col>
           </Row>
-          {/* <div>{this.state.product.shortDescription}</div> */}
-          <div>{this.state.product.longDescription}</div>
         </Container>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Added to cart</ModalHeader>
