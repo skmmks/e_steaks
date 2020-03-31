@@ -8,25 +8,22 @@ export default class ProductList extends React.Component {
       <ProductListItem key={merch.id} merch={merch} setView={this.props.setView} />
     ));
     return (
-      // <div className='container'>
-      //   <div>
-      //     <img className='catalogBanner' src='/images/catalog-banner.jpg' alt='' />
-      //   </div>
-      //   <h1 className='catalogHeader'>classic lineup</h1>
-      //   <hr />
-      //   <div className='row'>{merch}</div>
-      // </div>
       <React.Fragment>
+        <Container>
+          <h1 className='bannerText'>Classic Lineup</h1>
+        </Container>
         <div>
           <img className='catalogBanner' src='./images/catalog-banner.jpg' alt='Catalog banner image' />
         </div>
         <hr />
         <div>
-          <h1 className='text-center'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ad unde nihil facilis cum odio, molestiae
-            nesciunt? Ab eveniet nesciunt, cupiditate molestias quos tempore consequuntur reprehenderit quasi. Omnis,
-            corporis et.
-          </h1>
+          <div className='mx-5 px-5 text-center'>
+            Heritage Farms is celebrated world-wide by chefs and connoisseurs. Our family-owned business is focused on
+            creating the most delicious beef available.
+            <br />
+            We take pride in doing what is right - for our animals, our environment, and our customers. We're one of the
+            only beef companies in the world that personally touches every aspect of production from start to finish.
+          </div>
         </div>
         <hr />
         <Container>
@@ -36,8 +33,3 @@ export default class ProductList extends React.Component {
     );
   }
 }
-
-// <React.Fragment>
-//   <img className='banner-image' src='./media/catalog-hero.jpg' alt='Catalog banner image' />
-//   <Row className='justify-content-md-center mr-1 ml-1'>{items}</Row>
-// </React.Fragment>;

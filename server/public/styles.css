@@ -84,10 +84,8 @@
   width: 100%;
 }
 .bannerText {
-  bottom: 45%;
-  color: #fff;
   position: absolute;
-  z-index: 10;
+  color: #fff;
 }
 /* .headerBar {
   background-color: darkolivegreen;
