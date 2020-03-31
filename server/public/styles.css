@@ -79,6 +79,16 @@
   color: #626545;
   font-size: 2.25em;
 }
+.catalogBanner {
+  display: relative;
+  width: 100%;
+}
+.bannerText {
+  bottom: 45%;
+  color: #fff;
+  position: absolute;
+  z-index: 10;
+}
 /* .headerBar {
   background-color: darkolivegreen;
   color: #fff;
