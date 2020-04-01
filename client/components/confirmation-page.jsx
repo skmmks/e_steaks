@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckoutSummary from './cart-summary-item';
+import { Container, Row, Col } from 'reactstrap';
 
 export default class ConfirmationPage extends React.Component {
   constructor(props) {
@@ -8,9 +9,17 @@ export default class ConfirmationPage extends React.Component {
   }
   handleViewChange(e) {
     e.preventDefault();
-    this.props.setView(e.target.name, {});
+    this.props.setView('landingPage', {});
   }
   render() {
-    return <h1>confirmation page</h1>;
+    return (
+      <React.Fragment>
+        <Container>
+          <Row>
+            <Col onClick={this.handleViewChange}>Done</Col>
+          </Row>
+        </Container>
+      </React.Fragment>
+    );
   }
 }

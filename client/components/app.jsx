@@ -16,7 +16,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       },
       cart: [],
@@ -208,7 +208,7 @@ export default class App extends React.Component {
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <Navigation setView={this.setView} />
-          <ConfirmationPage setView={this.setView} />
+          <ConfirmationPage setView={this.setView} order={this.state.userOrder} />
         </div>
       );
     }

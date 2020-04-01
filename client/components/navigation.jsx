@@ -13,7 +13,6 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div className='navigationBar'>
-        {/* mollyjogger */}
         <Navbar>
           <NavbarBrand className='pointer-hover' name='landingPage' onClick={this.handleView}>
             Heritage Farms
