@@ -198,7 +198,6 @@ export default class App extends React.Component {
             setView={this.setView}
             cart={this.state.cart}
             placeOrder={this.placeOrder}
-            setView={this.setView}
             orderDetails={this.showUserDetails}
           />
         </div>
