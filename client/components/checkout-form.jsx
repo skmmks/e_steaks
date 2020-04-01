@@ -157,7 +157,7 @@ export default class CheckoutForm extends React.Component {
             </Col>
           </Row>
         </Container>
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal className={this.props.className} isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}></ModalHeader>
           <ModalBody>
             <Container>
