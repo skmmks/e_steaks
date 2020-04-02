@@ -10,12 +10,12 @@ export default class CheckoutSummary extends React.Component {
     return (
       <React.Fragment>
         <Container>
-          <Row className='ml-5 mb-3 pl-5 text-white'>
-            <Col sm='4'>
-              <img className='col-sm-10 mx-auto' src={this.props.product.image} alt=''></img>
-              <Badge className='quantityBadge' color='light' pill>
+          <Row>
+            <Col className='mb-2' sm='4'>
+              <img className='col-sm-12' src={this.props.product.image} alt=''></img>
+              {/* <Badge className='quantityBadge' color='light' pill>
                 {this.props.product.quantity}
-              </Badge>
+              </Badge> */}
             </Col>
             <Col sm='7'>{this.props.product.name}</Col>
             <Col sm='1'>${total}</Col>

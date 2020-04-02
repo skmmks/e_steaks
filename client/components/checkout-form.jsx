@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col, Container, FormFeedback, Input, InputGroup, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, Container, FormFeedback, Input, InputGroup, Row, Button } from 'reactstrap';
 import CheckoutSummary from './checkout-summary';
 
 export default class CheckoutForm extends React.Component {
@@ -29,6 +29,8 @@ export default class CheckoutForm extends React.Component {
     this.handleCartClick = this.handleCartClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
+    // this.validateText = this.validateText.bind(this);
+    // this.onTextChange = this.onTextChange.bind(this);
     this.toggle = this.toggle.bind(this);
   }
   componentDidMount() {
@@ -43,6 +45,20 @@ export default class CheckoutForm extends React.Component {
       modal: !prevState.modal
     }));
   }
+  // validateText(e) {
+  //   const nameRegex = /[A-Za-z0-9]/;
+  //   let { validate } = this.state;
+  //   if (nameRegex.test(e.target.value)) {
+  //     validate = 'has-success';
+  //   } else {
+  //     validate = 'has-danger';
+  //   }
+  //   this.setState({ validate });
+  // }
+  // onTextChange(e) {
+  //   this.handleInputChange(e);
+  //   this.validateText(e);
+  // }
   handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -79,10 +95,6 @@ export default class CheckoutForm extends React.Component {
     const cartItems = this.props.cart.map((product, index) => (
       <CheckoutSummary key={index} product={product} setView={this.props.setView} />
     ));
-    // let orderQuantities = this.props.cart.reduce((total, product) => {
-    //   total += product.quantity;
-    //   return total;
-    // }, 0);
     const totalCartPrice = this.props.cart.reduce((acc, cur) => {
       acc += cur.price * cur.quantity;
       return acc;
@@ -96,7 +108,7 @@ export default class CheckoutForm extends React.Component {
             <span style={{ color: 'rgb(93, 148, 155)' }} className='pointer-hover' onClick={this.handleCartClick}>
               Cart
             </span>{' '}
-            > Information > Shipping > Payment
+            > Shipping Information & Payment
           </div>
           <Row>
             <Col sm='7'>
@@ -111,36 +123,53 @@ export default class CheckoutForm extends React.Component {
                   </InputGroup>
                 </CardBody>
               </Card>
-              <Card className='mb-4'>
+              <Card className='mb-2'>
                 <CardHeader>
                   <div>Shipping Address</div>
                 </CardHeader>
                 <CardBody>
                   <InputGroup className='mb-1'>
-                    <Input placeholder='Name' name='name' />
+                    <Input
+                      placeholder='Name'
+                      // valid={this.state.validate === 'has-success'}
+                      // invalid={this.state.validate === 'has-danger'}
+                      name='name'
+                      // onChange={this.onTextChange}
+                    />
                   </InputGroup>
                   <InputGroup className='mb-1'>
                     <Input placeholder='Address' name='address' />
                   </InputGroup>
-                  <InputGroup className=''>
+                  <InputGroup className='mb-1'>
                     <Input placeholder='Phone' name='phone' />
                   </InputGroup>
                 </CardBody>
               </Card>
-              <button
-                type='button'
-                className='btn btn-lg btn-secondary btn-block card-font'
-                onClick={this.handleCartClick}
-              >
-                BACK TO CART
-              </button>
-              <button type='button' className='btn btn-lg btn-success btn-block card-font' onClick={this.handleOrder}>
-                CONFIRM SHIPPING & BILLING
-              </button>
+              <Card>
+                <CardHeader>
+                  <div>Payment</div>
+                </CardHeader>
+                <CardBody>
+                  <InputGroup>
+                    <Input placeholder='Card Number' name='creditCard'>
+                      <FormFeedback invalid='true'>Please enter credit card number with no dashes</FormFeedback>
+                    </Input>
+                  </InputGroup>
+                  <InputGroup>
+                    <Input placeholder='Expiration Date (MM/YY)' name='creditCardExpiration'>
+                      <FormFeedback invalid='true'>Please enter credit card number with no dashes</FormFeedback>
+                    </Input>
+                  </InputGroup>
+                  <InputGroup>
+                    <Input placeholder='Security Code' name='cardVerificationValue'>
+                      <FormFeedback invalid='true'>Please enter credit card number with no dashes</FormFeedback>
+                    </Input>
+                  </InputGroup>
+                </CardBody>
+              </Card>
             </Col>
             <Col className='orderSummary' sm='5'>
-              <div className='h3 card-font'>IN YOUR CART</div>
-              {/* <div>{cartItems}</div> */}
+              <div>{cartItems}</div>
               <hr />
               <div className='h6 description-font'>
                 Subtotal:
@@ -150,6 +179,12 @@ export default class CheckoutForm extends React.Component {
               <div className='h4 card-font mb-4 text-orange'>
                 TOTAL : <span className='float-right'>${totalPrice}</span>
               </div>
+              <Button type='button' className='addToCartButton mr-2' onClick={this.handleCartClick}>
+                BACK TO CART
+              </Button>
+              <Button className='addToCartButton ml-2' type='button' onClick={this.handleOrder}>
+                Pay Now
+              </Button>
             </Col>
           </Row>
         </Container>
