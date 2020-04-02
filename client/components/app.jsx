@@ -48,16 +48,21 @@ export default class App extends React.Component {
       this.setState({ cart: JSON.parse(localStorage.cart) });
     }
   }
-  placeOrder(info) {
+  placeOrder(orderId, name, address, email, phone, creditCard) {
     localStorage.clear();
-    let currentCart = [...this.state.cart];
-    currentCart.map(product => {
-      delete product.description;
-      delete product.image;
+    let userCartCheckout = [...this.state.cart];
+    userCartCheckout.map(item => {
+      delete item.description;
+      delete item.image;
     });
     let orderDetails = {
-      info,
-      cart: JSON.stringify(currentCart)
+      orderId,
+      name,
+      address,
+      email,
+      phone,
+      creditCard,
+      cart: JSON.stringify(userCartCheckout)
     };
     fetch('./api/orders.php', {
       method: 'POST',
@@ -69,7 +74,7 @@ export default class App extends React.Component {
         localStorage.cart = JSON.stringify([]);
         this.setState({ cart: [] });
       })
-      .catch(error => error);
+      .catch(error => console.error(error));
   }
   getCartItems() {
     fetch('/api/cart.php', {
@@ -192,8 +197,8 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div className='checkout'>
-          <Header cartItemCount={this.state.cart} setView={this.setView} />
-          <Navigation setView={this.setView} />
+          {/* <Header cartItemCount={this.state.cart} setView={this.setView} /> */}
+          {/* <Navigation setView={this.setView} /> */}
           <CheckoutForm
             setView={this.setView}
             cart={this.state.cart}
