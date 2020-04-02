@@ -1,189 +1,158 @@
 import React from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from 'reactstrap';
-
+import { Card, CardBody, CardHeader, Col, Container, FormFeedback, Input, InputGroup, Row } from 'reactstrap';
 import CheckoutSummary from './checkout-summary';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
+      orderId: '',
       name: '',
-      creditCard: '',
       address: '',
-      city: '',
-      zip: '',
+      email: '',
       phone: '',
-      orderID: ''
+      creditCard: '',
+      ccExpiration: '',
+      cvv: '',
+      validate: {
+        name: '',
+        address: '',
+        email: '',
+        phone: '',
+        creditCard: '',
+        creditCardExpiration: '',
+        cardVerificationValue: ''
+      },
+      modal: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.handlePlaceOrder = this.handlePlaceOrder.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOrder = this.handleOrder.bind(this);
     this.toggle = this.toggle.bind(this);
-    // this.validate = this.validateText.bind(this);
   }
   componentDidMount() {
-    const orderID = Math.random()
+    const orderId = Math.random()
       .toString(36)
       .substr(2, 9)
       .toUpperCase();
-    this.setState({
-      orderID: orderID
-    });
+    this.setState({ orderId: orderId });
   }
   toggle() {
-    this.setState(previousState => ({
-      modal: !previousState.modal
+    this.setState(prevState => ({
+      modal: !prevState.modal
     }));
+  }
+  handleInputChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
   handleCartClick(e) {
     e.preventDefault();
     this.props.setView('cart', {});
   }
-  handleInput(e) {
-    e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.orderDetails(this.state.orderID);
-    this.toggle();
+    const customerInformation = {
+      orderId: this.state.orderId,
+      name: this.state.name,
+      address: this.state.address,
+      email: this.state.email,
+      phone: this.state.phone,
+      creditCard: this.state.creditCard
+    };
+    this.props.orderDetails(customerInformation);
   }
-  handlePlaceOrder(e) {
+  handleOrder(e) {
     e.preventDefault();
     this.toggle();
-    this.props.placeOrder(this.state.orderId);
+    this.props.placeOrder(
+      this.state.orderId,
+      this.state.name,
+      this.state.address,
+      this.state.email,
+      this.state.phone,
+      this.state.creditCard
+    );
     this.props.setView('confirmationPage', {});
   }
-  // validateText(e) {
-  //   console.log('name: ', e.target.name);
-  //   console.log('value: ', e.target.value);
-  //   const regexTest = /[A-Za-z0-9]/;
-  //   // const { validate } = this.state;
-  //   regexTest.test(e.target.value) ? ([e.target.name] = 'success') : ([e.target.name] = 'unsuccess');
-  // }
   render() {
-    const currentCart = this.props.cart.map((product, index) => (
+    const cartItems = this.props.cart.map((product, index) => (
       <CheckoutSummary key={index} product={product} setView={this.props.setView} />
     ));
-    const priceOfCartItems = this.props.cart.reduce(
-      (accumulator, currentValue) => accumulator + parseInt(currentValue.price),
-      0
-    );
+    // let orderQuantities = this.props.cart.reduce((total, product) => {
+    //   total += product.quantity;
+    //   return total;
+    // }, 0);
+    const totalCartPrice = this.props.cart.reduce((acc, cur) => {
+      acc += cur.price * cur.quantity;
+      return acc;
+    }, 0);
+    const totalPrice = parseFloat(totalCartPrice / 100).toFixed(2);
     return (
       <React.Fragment>
-        <Container>
+        <Container className='mt-4 mb-5'>
+          <div className='text-left card-font mb-4'>
+            {' '}
+            <span style={{ color: 'rgb(93, 148, 155)' }} className='pointer-hover' onClick={this.handleCartClick}>
+              Cart
+            </span>{' '}
+            > Information > Shipping > Payment
+          </div>
           <Row>
-            <Col className='mt-5'>CHECKOUT</Col>
-          </Row>
-          <Row className='mt-3'>
-            <Col sm='5'>
-              <Form onSubmit={this.handlePlaceOrder}>
-                <FormGroup>
-                  <Input
-                    name='name'
-                    placeholder='Your Name Here'
-                    className='form-control mb-3'
-                    type='text'
-                    onChange={this.handleInput}
-                    value={this.state.name}
-                  />
-                  <Input
-                    name='creditCard'
-                    placeholder='XXXX-XXXX-XXXX'
-                    className='form-control mb-3'
-                    type='number'
-                    onChange={this.handleInput}
-                    value={this.state.creditCard}
-                  />
-                  <Input
-                    name='address'
-                    placeholder='Address'
-                    className='form-control mb-3'
-                    type='text'
-                    onChange={this.handleInput}
-                    value={this.state.address}
-                  />
-                  <Input
-                    name='city'
-                    placeholder='City'
-                    className='form-control mb-3'
-                    type='text'
-                    onChange={this.handleInput}
-                    value={this.state.city}
-                  />
-                  <Input
-                    name='zip'
-                    placeholder='Zip Code'
-                    className='form-control mb-3'
-                    type='text'
-                    onChange={this.handleInput}
-                    value={this.state.zip}
-                  />
-                  <Input
-                    name='phone'
-                    placeholder='Phone'
-                    className='form-control mb-3'
-                    type='number'
-                    onChange={this.handleInput}
-                    value={this.state.phone}
-                  />
-                </FormGroup>
-              </Form>
+            <Col sm='7'>
+              <Card className='mb-2'>
+                <CardHeader>
+                  <div>Contact Information</div>
+                </CardHeader>
+                <CardBody>
+                  <InputGroup className='mb-1'>
+                    <Input placeholder='E-Mail' name='email' />
+                    <FormFeedback invalid='true'>Please enter a valid e-mail address.</FormFeedback>
+                  </InputGroup>
+                </CardBody>
+              </Card>
+              <Card className='mb-4'>
+                <CardHeader>
+                  <div>Shipping Address</div>
+                </CardHeader>
+                <CardBody>
+                  <InputGroup className='mb-1'>
+                    <Input placeholder='Name' name='name' />
+                  </InputGroup>
+                  <InputGroup className='mb-1'>
+                    <Input placeholder='Address' name='address' />
+                  </InputGroup>
+                  <InputGroup className=''>
+                    <Input placeholder='Phone' name='phone' />
+                  </InputGroup>
+                </CardBody>
+              </Card>
+              <button
+                type='button'
+                className='btn btn-lg btn-secondary btn-block card-font'
+                onClick={this.handleCartClick}
+              >
+                BACK TO CART
+              </button>
+              <button type='button' className='btn btn-lg btn-success btn-block card-font' onClick={this.handleOrder}>
+                CONFIRM SHIPPING & BILLING
+              </button>
             </Col>
-            <Col sm='7'>{currentCart}</Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button onClick={this.handleCartClick}>Return To Cart</Button>
-              <Button type='submit' onClick={this.handleSubmit}>
-                Checkout
-              </Button>
+            <Col className='orderSummary' sm='5'>
+              <div className='h3 card-font'>IN YOUR CART</div>
+              {/* <div>{cartItems}</div> */}
+              <hr />
+              <div className='h6 description-font'>
+                Subtotal:
+                <span className='float-right'>${(totalCartPrice / 100).toFixed(2)}</span>
+              </div>
+              <hr />
+              <div className='h4 card-font mb-4 text-orange'>
+                TOTAL : <span className='float-right'>${totalPrice}</span>
+              </div>
             </Col>
           </Row>
         </Container>
-        <Modal className={this.props.className} isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}></ModalHeader>
-          <ModalBody>
-            <Container>
-              <Row>
-                <Col>
-                  <div>Name:{this.state.name}</div>
-                  <div>Address:{this.state.address}</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </Col>
-                <Col>
-                  <div>1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </Col>
-              </Row>
-            </Container>
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={this.toggle}>Go Back</Button>
-            <Button onClick={this.handlePlaceOrder}>Submit</Button>
-          </ModalFooter>
-        </Modal>
       </React.Fragment>
     );
   }
