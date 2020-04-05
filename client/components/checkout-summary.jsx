@@ -9,18 +9,15 @@ export default class CheckoutSummary extends React.Component {
     const total = ((this.props.product.price * this.props.product.quantity) / 100).toFixed(2);
     return (
       <React.Fragment>
-        <Container>
-          <Row>
-            <Col className='mb-2' sm='4'>
-              <img className='col-sm-12' src={this.props.product.image} alt=''></img>
-              {/* <Badge className='quantityBadge' color='light' pill>
-                {this.props.product.quantity}
-              </Badge> */}
-            </Col>
-            <Col sm='7'>{this.props.product.name}</Col>
-            <Col sm='1'>${total}</Col>
-          </Row>
-        </Container>
+        <Row className='mb-2'>
+          <Col sm='3'>
+            <img className='checkoutThumbnail' src={this.props.product.image} alt={this.props.product.name} />
+          </Col>
+          <Col sm='7'>{this.props.product.name}</Col>
+          <Col sm='2' className='text-right'>
+            ${total}
+          </Col>
+        </Row>
       </React.Fragment>
     );
   }

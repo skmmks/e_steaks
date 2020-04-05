@@ -16,14 +16,14 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'checkout',
-        params: {}
+        name: 'landingPage',
+        params: {},
       },
       cart: [],
       userOrder: {
         userInfo: {},
-        cart: []
-      }
+        cart: [],
+      },
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -36,8 +36,8 @@ export default class App extends React.Component {
     this.setState({
       view: {
         name,
-        params
-      }
+        params,
+      },
     });
   }
   componentDidMount() {
@@ -51,7 +51,7 @@ export default class App extends React.Component {
   placeOrder(orderId, name, address, email, phone, creditCard) {
     localStorage.clear();
     let userCartCheckout = [...this.state.cart];
-    userCartCheckout.map(item => {
+    userCartCheckout.map((item) => {
       delete item.description;
       delete item.image;
     });
@@ -62,49 +62,49 @@ export default class App extends React.Component {
       email,
       phone,
       creditCard,
-      cart: JSON.stringify(userCartCheckout)
+      cart: JSON.stringify(userCartCheckout),
     };
     fetch('./api/orders.php', {
       method: 'POST',
       body: JSON.stringify(orderDetails),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(() => {
         localStorage.cart = JSON.stringify([]);
         this.setState({ cart: [] });
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }
   getCartItems() {
     fetch('/api/cart.php', {
-      method: 'GET'
+      method: 'GET',
     })
-      .then(res => res.json())
-      .then(cartItems =>
+      .then((res) => res.json())
+      .then((cartItems) =>
         this.setState({
-          cart: cartItems
+          cart: cartItems,
         })
       )
-      .catch(error => error);
+      .catch((error) => error);
   }
   getProducts() {
     fetch('./api/products.php', {
-      method: 'GET'
+      method: 'GET',
     })
-      .then(response => response.json())
-      .then(retrieveProducts =>
+      .then((response) => response.json())
+      .then((retrieveProducts) =>
         this.setState({
-          products: retrieveProducts
+          products: retrieveProducts,
         })
       )
-      .catch(error => error);
+      .catch((error) => error);
   }
   addToCart(product, productQuantity) {
     product.quantity = 0;
 
     let currentCart = JSON.parse(localStorage.getItem('cart'));
-    let numberofProduct = currentCart.findIndex(itemIndex => {
+    let numberofProduct = currentCart.findIndex((itemIndex) => {
       return itemIndex.id === product.id;
     });
     if (numberofProduct > -1) {
@@ -123,13 +123,13 @@ export default class App extends React.Component {
     this.setState({
       userOrder: {
         userInfo,
-        cart: JSON.parse(localStorage.cart)
-      }
+        cart: JSON.parse(localStorage.cart),
+      },
     });
   }
   removeFromCart(productId) {
     let currentCart = JSON.parse(localStorage.getItem('cart'));
-    let itemIndex = currentCart.findIndex(steak => {
+    let itemIndex = currentCart.findIndex((steak) => {
       return steak.id === productId;
     });
     currentCart.splice(itemIndex, 1);
@@ -138,7 +138,7 @@ export default class App extends React.Component {
   }
   updateFromCart(productID, update) {
     let currentCart = JSON.parse(localStorage.getItem('cart'));
-    let updatedIndex = currentCart.findIndex(item => {
+    let updatedIndex = currentCart.findIndex((item) => {
       return item.id === productID;
     });
     update === 'increment' ? currentCart[updatedIndex].quantity++ : currentCart[updatedIndex].quantity--;

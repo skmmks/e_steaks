@@ -21,9 +21,9 @@ export default class CheckoutForm extends React.Component {
         phone: '',
         creditCard: '',
         creditCardExpiration: '',
-        cardVerificationValue: ''
+        cardVerificationValue: '',
       },
-      modal: false
+      modal: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCartClick = this.handleCartClick.bind(this);
@@ -34,15 +34,12 @@ export default class CheckoutForm extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
   componentDidMount() {
-    const orderId = Math.random()
-      .toString(36)
-      .substr(2, 9)
-      .toUpperCase();
+    const orderId = Math.random().toString(36).substr(2, 9).toUpperCase();
     this.setState({ orderId: orderId });
   }
   toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal
+    this.setState((prevState) => ({
+      modal: !prevState.modal,
     }));
   }
   // validateText(e) {
@@ -74,7 +71,7 @@ export default class CheckoutForm extends React.Component {
       address: this.state.address,
       email: this.state.email,
       phone: this.state.phone,
-      creditCard: this.state.creditCard
+      creditCard: this.state.creditCard,
     };
     this.props.orderDetails(customerInformation);
   }

@@ -10,6 +10,10 @@
   width: 100vw;
   position: fixed;
 }
+.checkoutThumbnail {
+  height: 5em;
+  width: 5em;
+}
 .navigationBar {
   padding: 0.75em;
   background-color: rgb(252, 249, 245);
