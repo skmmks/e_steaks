@@ -92,11 +92,12 @@ export default class CheckoutForm extends React.Component {
     const cartItems = this.props.cart.map((product, index) => (
       <CheckoutSummary key={index} product={product} setView={this.props.setView} />
     ));
-    const totalCartPrice = this.props.cart.reduce((acc, cur) => {
+    const totalPrice = this.props.cart.reduce((acc, cur) => {
       acc += cur.price * cur.quantity;
       return acc;
     }, 0);
-    const totalPrice = parseFloat(totalCartPrice / 100).toFixed(2);
+    let cartTotal = totalPrice > 5000 ? parseFloat(totalPrice) / 100 : parseFloat(totalPrice + 799) / 100;
+    let shippingConditionalDOM = totalPrice > 5000 ? <span>Free</span> : <span>$7.99</span>;
     return (
       <React.Fragment>
         <Container className='mt-4 mb-5'>
@@ -170,11 +171,15 @@ export default class CheckoutForm extends React.Component {
               <hr />
               <div className='h6 description-font'>
                 Subtotal:
-                <span className='float-right'>${(totalCartPrice / 100).toFixed(2)}</span>
+                <span className='float-right'>${(totalPrice / 100).toFixed(2)}</span>
+              </div>
+              <div className='h6 description-font'>
+                Shipping:
+                <span className='float-right'>{shippingConditionalDOM}</span>
               </div>
               <hr />
               <div className='h4 card-font mb-4 text-orange'>
-                TOTAL : <span className='float-right'>${totalPrice}</span>
+                GRAND TOTAL : <span className='float-right'>${cartTotal}</span>
               </div>
               <Button type='button' className='addToCartButton mr-2' onClick={this.handleCartClick}>
                 BACK TO CART

@@ -11,9 +11,14 @@ export default class CheckoutSummary extends React.Component {
       <React.Fragment>
         <Row className='mb-2'>
           <Col sm='3'>
-            <img className='checkoutThumbnail' src={this.props.product.image} alt={this.props.product.name} />
+            <div>
+              <img className='checkoutThumbnail' src={this.props.product.image} alt={this.props.product.name} />
+              <Badge className='notify-badge' color='danger' pill>
+                {this.props.product.quantity}
+              </Badge>
+            </div>
           </Col>
-          <Col sm='7'>{this.props.product.name}</Col>
+          <Col sm='7'>{this.props.product.name} </Col>
           <Col sm='2' className='text-right'>
             ${total}
           </Col>
