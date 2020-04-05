@@ -28,6 +28,11 @@ export default class Navigation extends React.Component {
                 About
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink className='pointer-hover m-0' name='contact' onClick={this.handleView}>
+                Contact
+              </NavLink>
+            </NavItem>
           </Nav>
         </Navbar>
       </div>

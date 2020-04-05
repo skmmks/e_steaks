@@ -9,6 +9,7 @@ import LandingPage from './landing-page';
 import AboutApp from './about-app';
 import Navigation from './navigation';
 import ConfirmationPage from './confirmation-page';
+import ContactForm from './contact-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: {
-        name: 'checkout',
+        name: 'landingPage',
         params: {},
       },
       cart: [],
@@ -159,6 +160,14 @@ export default class App extends React.Component {
         <div>
           <Header cartItemCount={this.state.cart} setView={this.setView} />
           <AboutApp setView={this.setView} />
+        </div>
+      );
+    } else if (this.state.view.name === 'contact') {
+      return (
+        <div>
+          <Header cartItemCount={this.state.cart} setView={this.setView} />
+          <Navigation setView={this.setView} />
+          <ContactForm />
         </div>
       );
     } else if (this.state.view.name === 'catalog') {

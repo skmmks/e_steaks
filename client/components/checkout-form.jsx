@@ -100,6 +100,8 @@ export default class CheckoutForm extends React.Component {
     let shippingConditionalDOM = totalPrice > 5000 ? <span>Free</span> : <span>$7.99</span>;
     return (
       <React.Fragment>
+        <img className='checkoutLogo' src='images/logo2.png' alt='' />
+        <i class='far fa-registered fa-xs registeredTrademark'></i>
         <Container className='mt-4 mb-5'>
           <div className='text-left card-font mb-4'>
             {' '}

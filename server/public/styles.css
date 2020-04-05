@@ -10,6 +10,13 @@
   width: 100vw;
   position: fixed;
 }
+.registeredTrademark {
+  margin-left: -25px;
+}
+.checkoutLogo {
+  margin-bottom: -50px;
+  height: 100px;
+}
 .checkoutThumbnail {
   height: 5em;
   width: 5em;
