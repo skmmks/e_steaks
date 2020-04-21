@@ -6,7 +6,7 @@ export default class Header extends React.Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
     this.handleLandingPageView = this.handleLandingPageView.bind(this);
     this.handleCartView = this.handleCartView.bind(this);
@@ -31,7 +31,7 @@ export default class Header extends React.Component {
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
   render() {
@@ -43,10 +43,13 @@ export default class Header extends React.Component {
       <div>
         <div className='text-center shippingHeader'>FREE SHIPPING ON ORDERS $50 OR MORE. </div>
         <Navbar className='navBarHeader' expand='md'>
-          <NavbarBrand className='header-font pointer-hover noselect' onClick={this.handleLandingPageView}>
+          {/* <NavbarBrand className='header-font pointer-hover noselect' onClick={this.handleLandingPageView}>
             <span>
               <img className='navBarImg' src='images/logo.png' alt='Heritage Farm Logo' />
             </span>
+          </NavbarBrand> */}
+          <NavbarBrand className='ml-5 pointer-hover'>
+            <i className='fas fa-question-circle fa-lg' onClick={this.handleAboutAppView}></i>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -63,9 +66,9 @@ export default class Header extends React.Component {
                   ({orders})
                 </i>
               </NavLink>
-              <NavLink className='pointer-hover'>
+              {/* <NavLink className='pointer-hover'>
                 <i className='fas fa-question-circle fa-lg' onClick={this.handleAboutAppView}></i>
-              </NavLink>
+              </NavLink> */}
             </Nav>
           </Collapse>
         </Navbar>

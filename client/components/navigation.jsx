@@ -15,7 +15,7 @@ export default class Navigation extends React.Component {
       <div className='navigationBar'>
         <Navbar>
           <NavbarBrand className='pointer-hover' name='landingPage' onClick={this.handleView}>
-            Heritage Farms
+            <img className='headerLogo' src='images/logo2.png' alt='' name='landingPage' />
           </NavbarBrand>
           <Nav>
             <NavItem>
